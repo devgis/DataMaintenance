@@ -52,7 +52,7 @@ namespace Main.Product
             }
             else
             {
-                int id = Convert.ToInt32(dgList.SelectedRows[0].Cells["CID"].Value);
+                string id =dgList.SelectedRows[0].Cells["CID"].Value.ToString();
                 AddEditForm addEditForm = new AddEditForm(id,true);
                 if (addEditForm.ShowDialog() == DialogResult.OK)
                 {
@@ -69,7 +69,7 @@ namespace Main.Product
             }
             else
             {
-                int id = Convert.ToInt32(dgList.SelectedRows[0].Cells["CID"].Value);
+                string id = dgList.SelectedRows[0].Cells["CID"].Value.ToString();
                 if (Delete(id))
                 {
                     LoadData();
@@ -81,11 +81,11 @@ namespace Main.Product
                 }
             }
         }
-        private bool Delete(int id)
+        private bool Delete(string id)
         {
-            string sql = "delete from Product where ID=?";
+            string sql = "delete from Product where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
-                         new SqlParameter("ID",OleDbType.Numeric)
+                         new SqlParameter("id",SqlDbType.VarChar)
                     };
 
             parameters[0].Value = id;

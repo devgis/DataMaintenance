@@ -144,6 +144,7 @@
             this.CID.MinimumWidth = 6;
             this.CID.Name = "CID";
             this.CID.ReadOnly = true;
+            this.CID.Visible = false;
             this.CID.Width = 60;
             // 
             // CName

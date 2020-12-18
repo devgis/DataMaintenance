@@ -14,13 +14,15 @@ namespace Main.Product
     public partial class AddEditForm : Form
     {
         bool IsEdit = false;
-        public AddEditForm(int id=0,bool isEdit=false)
+        private string ID = string.Empty;
+        public AddEditForm(string id="",bool isEdit=false)
         {
             InitializeComponent();
             IsEdit = isEdit;
             if (isEdit)
             {
                 this.Text = "编辑";
+                ID = id;
                 LoadData(id);
             }
             else
@@ -67,120 +69,97 @@ namespace Main.Product
 
         private bool Check()
         {
-            if (string.IsNullOrEmpty(tbID.Text.Trim()))
+            if (string.IsNullOrEmpty(tbName.Text.Trim()))
             {
-                MessageBox.Show("编号不能为空");
-                tbID.Focus();
+                MessageBox.Show("Name不能为空");
+                tbName.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(tbPrice.Text.Trim()))
+            {
+                MessageBox.Show("Price不能为空");
+                tbPrice.Focus();
+                return false;
+            }
+            else
+            {
+                try {
+                    Convert.ToDouble(tbPrice.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Price必须为数值类型");
+                    tbPrice.Focus();
+                    return false;
+                }
+                
+            }
+
+            if (string.IsNullOrEmpty(tbQuantity.Text.Trim()))
+            {
+                MessageBox.Show("Quantity不能为空");
+                tbQuantity.Focus();
                 return false;
             }
             else
             {
                 try
                 {
-                    int id = Convert.ToInt32(tbID.Text);
-                    if(!IsEdit)
-                    {
-                        if (ExistsID(id))
-                        {
-                            MessageBox.Show("编号已存在");
-                            tbID.Focus();
-                            return false;
-                        }
-                    }
+                    Convert.ToDouble(tbQuantity.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("编号必须为整数");
-                    tbID.Focus();
+                    MessageBox.Show("Quantity必须为数值类型");
+                    tbQuantity.Focus();
                     return false;
                 }
 
-            }
-
-            if (string.IsNullOrEmpty(tbName.Text.Trim()))
-            {
-                MessageBox.Show("姓名不能为空");
-                tbName.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(tbAge.Text.Trim()))
-            {
-                MessageBox.Show("年龄不能为空");
-                tbAge.Focus();
-                return false;
-            }
-            else
-            {
-                try {
-                    int age = Convert.ToInt32(tbAge.Text);
-
-                    if (age < 1 || age > 100)
-                    {
-                        MessageBox.Show("年龄必须为1~100");
-                        tbAge.Focus();
-                        return false;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("年龄必须为整数");
-                    tbAge.Focus();
-                    return false;
-                }
-                
             }
             return true;
         }
 
         public bool Add()
         {
-            string sql = "insert into Student (ID,Name,Address,Age,Sex,Remark) values(?,?,?,?,?,?)";
+            string sql = "insert into Product (id,name,price,quantity) values(@id,@name,@price,@quantity)";
             SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("ID",OleDbType.Numeric),
-                         new SqlParameter("Name",OleDbType.VarChar),
-                        new SqlParameter("Address",OleDbType.VarChar),
-                         new SqlParameter("Age",OleDbType.Numeric),
-                         new SqlParameter("Sex",OleDbType.VarChar),
-                         new SqlParameter("Remark",OleDbType.VarChar)
+                         new SqlParameter("name",SqlDbType.VarChar),
+                         new SqlParameter("price",SqlDbType.Decimal),
+                         new SqlParameter("quantity",SqlDbType.Decimal),
+                         new SqlParameter("id",SqlDbType.VarChar)
                     };
-            parameters[0].Value = Convert.ToInt32(tbID.Text);
-            parameters[1].Value = tbName.Text;
-            parameters[2].Value = tbAddress.Text;
-            parameters[3].Value = Convert.ToInt32(tbAge.Text);
-            parameters[4].Value = cbSex.Text;
-            parameters[5].Value = tbRemark.Text;
+
+            parameters[0].Value = tbName.Text;
+            parameters[1].Value = Convert.ToDecimal(tbPrice.Text);
+            parameters[2].Value = Convert.ToDecimal(tbQuantity.Text);
+            parameters[3].Value = Guid.NewGuid().ToString() ;
 
             return SQLHelper.Instance.ExecSql(sql, parameters);
         }
 
         public bool Update()
         {
-            string sql = "update Student set Name=?,Address=?,Age=?,Sex=?,Remark=? where ID=?";
+            string sql = "update Product set name=@name,price=@price,quantity=@quantity where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
-                         new SqlParameter("Name",OleDbType.VarChar),
-                         new SqlParameter("Address",OleDbType.VarChar),
-                         new SqlParameter("Age",OleDbType.Numeric),
-                         new SqlParameter("Sex",OleDbType.VarChar),
-                         new SqlParameter("Remark",OleDbType.VarChar),
-                         new SqlParameter("ID",OleDbType.Numeric)
+                         new SqlParameter("name",SqlDbType.VarChar),
+                         new SqlParameter("price",SqlDbType.Decimal),
+                         new SqlParameter("quantity",SqlDbType.Decimal),
+                         new SqlParameter("id",SqlDbType.VarChar)
                     };
            
             parameters[0].Value = tbName.Text;
-            parameters[1].Value = tbAddress.Text;
-            parameters[2].Value = Convert.ToInt32(tbAge.Text);
-            parameters[3].Value = cbSex.Text;
-            parameters[4].Value = tbRemark.Text;
-            parameters[5].Value = Convert.ToInt32(tbID.Text);
+            parameters[1].Value = Convert.ToDecimal(tbPrice.Text);
+            parameters[2].Value = Convert.ToDecimal(tbQuantity.Text);
+            parameters[3].Value = ID;
 
             return SQLHelper.Instance.ExecSql(sql, parameters);
         }
 
-        public void LoadData(int id)
+        public void LoadData(string id)
         {
-            string sql = "select * from Student where ID=?";
+            string sql = "select * from Product where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
-                         new SqlParameter("ID",OleDbType.Numeric)
+                         new SqlParameter("id",SqlDbType.VarChar)
                     };
 
             parameters[0].Value = id;
@@ -188,34 +167,30 @@ namespace Main.Product
             DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
             if (dt != null && dt.Rows.Count > 0)
             {
-                tbID.Text = id.ToString();
-                tbID.ReadOnly = true;
-                tbName.Text = dt.Rows[0]["Name"].ToString();
-                cbSex.Text = dt.Rows[0]["Sex"].ToString();
-                tbAge.Text = dt.Rows[0]["Age"].ToString();
-                tbAddress.Text = dt.Rows[0]["Address"].ToString();
-                tbRemark.Text = dt.Rows[0]["Remark"].ToString();
+                tbName.Text = dt.Rows[0]["name"].ToString();
+                tbQuantity.Text = dt.Rows[0]["quantity"].ToString();
+                tbPrice.Text = dt.Rows[0]["price"].ToString();
             }
         }
 
-        public bool ExistsID(int id)
-        {
-            string sql = "select * from Student where ID=?";
-            SqlParameter[] parameters = new SqlParameter[] {
-                         new SqlParameter("ID",OleDbType.Numeric)
-                    };
+        //public bool ExistsID(int id)
+        //{
+        //    string sql = "select * from Student where ID=?";
+        //    SqlParameter[] parameters = new SqlParameter[] {
+        //                 new SqlParameter("ID",OleDbType.Numeric)
+        //            };
 
-            parameters[0].Value = id;
+        //    parameters[0].Value = id;
 
-            DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //    DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
+        //    if (dt != null && dt.Rows.Count > 0)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
