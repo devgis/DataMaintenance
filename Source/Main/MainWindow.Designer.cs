@@ -74,7 +74,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(170, 26);
+            this.miExit.Size = new System.Drawing.Size(224, 26);
             this.miExit.Text = "退出系统(&E)";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -153,6 +153,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.ToolTipText = "退出";
+            this.toolStripButton1.Click += new System.EventHandler(this.miExit_Click);
             // 
             // toolStripSeparator2
             // 

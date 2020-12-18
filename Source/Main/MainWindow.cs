@@ -20,7 +20,7 @@ namespace Main
 
         private void miExit_Click(object sender, EventArgs e)
         {
-            
+            Application.ExitThread();
         }
 
         private void miOffer_Click(object sender, EventArgs e)
