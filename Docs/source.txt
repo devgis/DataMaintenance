@@ -1,0 +1,29 @@
+namespace ecology
+{
+    enum WhyOffer { OFFERER = 1000, OFFEREE, DEAL, HELPLESS };
+    class Offer
+    {
+        string subjectname;
+        DateTime startTime;
+        List<Product> productList;
+        WhyOffer state;
+        DateTime doneTime;
+    }
+    class Product
+    {
+        string name;
+        double price;
+        double quantity;
+        public double getTotal() { return price * quantity; }
+    }
+   
+        class Subject
+    {
+        string name;
+        List<Subject> net;
+        List<Offer> plan;
+        List<Product> onhand;
+        public WhyOffer trade() { return WhyOffer.DEAL; }
+    }
+
+}
