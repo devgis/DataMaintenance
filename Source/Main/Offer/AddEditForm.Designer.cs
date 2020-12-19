@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgProductList = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,21 +39,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Cancel = new System.Windows.Forms.Button();
             this.btOK = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.cbWhyOffer = new System.Windows.Forms.ComboBox();
             this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDoneTime = new System.Windows.Forms.DateTimePicker();
-            this.cbProducts = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btAdd = new System.Windows.Forms.Button();
-            this.dgList = new System.Windows.Forms.DataGridView();
+            this.btSelect = new System.Windows.Forms.Button();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProductList)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,8 +58,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dgList, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dgProductList, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
@@ -70,8 +69,7 @@
             this.tableLayoutPanel1.Controls.Add(this.cbWhyOffer, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.dtpStartTime, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtpDoneTime, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.cbProducts, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.btAdd, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btSelect, 2, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -91,6 +89,48 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 356);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // dgProductList
+            // 
+            this.dgProductList.AllowUserToAddRows = false;
+            this.dgProductList.AllowUserToDeleteRows = false;
+            this.dgProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CID,
+            this.CName,
+            this.CPrice,
+            this.CQuantity});
+            this.dgProductList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgProductList.Location = new System.Drawing.Point(123, 163);
+            this.dgProductList.MultiSelect = false;
+            this.dgProductList.Name = "dgProductList";
+            this.dgProductList.ReadOnly = true;
+            this.dgProductList.RowHeadersWidth = 10;
+            this.tableLayoutPanel1.SetRowSpan(this.dgProductList, 5);
+            this.dgProductList.RowTemplate.Height = 27;
+            this.dgProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProductList.Size = new System.Drawing.Size(440, 144);
+            this.dgProductList.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label5.Location = new System.Drawing.Point(22, 160);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 30);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "ProductList";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Location = new System.Drawing.Point(46, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 30);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "DoneTime";
             // 
             // label2
             // 
@@ -161,16 +201,6 @@
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(46, 130);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 30);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "DoneTime";
-            // 
             // cbWhyOffer
             // 
             this.cbWhyOffer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -200,54 +230,16 @@
             this.dtpDoneTime.Size = new System.Drawing.Size(440, 25);
             this.dtpDoneTime.TabIndex = 17;
             // 
-            // cbProducts
+            // btSelect
             // 
-            this.cbProducts.FormattingEnabled = true;
-            this.cbProducts.Location = new System.Drawing.Point(123, 163);
-            this.cbProducts.Name = "cbProducts";
-            this.cbProducts.Size = new System.Drawing.Size(440, 23);
-            this.cbProducts.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(22, 190);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 30);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "ProductList";
-            // 
-            // btAdd
-            // 
-            this.btAdd.Location = new System.Drawing.Point(569, 163);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(44, 23);
-            this.btAdd.TabIndex = 20;
-            this.btAdd.Text = "Add";
-            this.btAdd.UseVisualStyleBackColor = true;
-            // 
-            // dgList
-            // 
-            this.dgList.AllowUserToAddRows = false;
-            this.dgList.AllowUserToDeleteRows = false;
-            this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CID,
-            this.CName,
-            this.CPrice,
-            this.CQuantity});
-            this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgList.Location = new System.Drawing.Point(123, 193);
-            this.dgList.MultiSelect = false;
-            this.dgList.Name = "dgList";
-            this.dgList.ReadOnly = true;
-            this.dgList.RowHeadersWidth = 51;
-            this.tableLayoutPanel1.SetRowSpan(this.dgList, 4);
-            this.dgList.RowTemplate.Height = 27;
-            this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgList.Size = new System.Drawing.Size(440, 114);
-            this.dgList.TabIndex = 21;
+            this.btSelect.Font = new System.Drawing.Font("宋体", 8F);
+            this.btSelect.Location = new System.Drawing.Point(569, 163);
+            this.btSelect.Name = "btSelect";
+            this.btSelect.Size = new System.Drawing.Size(44, 23);
+            this.btSelect.TabIndex = 20;
+            this.btSelect.Text = "选择";
+            this.btSelect.UseVisualStyleBackColor = true;
+            this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
             // 
             // CID
             // 
@@ -275,7 +267,7 @@
             this.CPrice.MinimumWidth = 6;
             this.CPrice.Name = "CPrice";
             this.CPrice.ReadOnly = true;
-            this.CPrice.Width = 125;
+            this.CPrice.Width = 80;
             // 
             // CQuantity
             // 
@@ -284,7 +276,7 @@
             this.CQuantity.MinimumWidth = 6;
             this.CQuantity.Name = "CQuantity";
             this.CQuantity.ReadOnly = true;
-            this.CQuantity.Width = 125;
+            this.CQuantity.Width = 80;
             // 
             // AddEditForm
             // 
@@ -300,8 +292,8 @@
             this.Text = "AddEditForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProductList)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,9 +313,8 @@
         private System.Windows.Forms.DateTimePicker dtpStartTime;
         private System.Windows.Forms.DateTimePicker dtpDoneTime;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbProducts;
-        private System.Windows.Forms.Button btAdd;
-        private System.Windows.Forms.DataGridView dgList;
+        private System.Windows.Forms.Button btSelect;
+        private System.Windows.Forms.DataGridView dgProductList;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrice;

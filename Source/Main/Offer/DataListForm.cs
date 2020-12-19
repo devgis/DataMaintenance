@@ -34,9 +34,25 @@ namespace Main.Offer
             DataTable dt = SQLHelper.Instance.GetDataTable(sql);
             dgList.DataSource = dt;
 
+
+            dgList.CellValueChanged += DgList_CellValueChanged;
+            dgList.BindingContextChanged += DgList_DataSourceChanged;
+        }
+
+        private void DgList_DataSourceChanged(object sender, EventArgs e)
+        {
+            UpdateColumn();
+        }
+
+        private void DgList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateColumn();
+        }
+        private void UpdateColumn()
+        {
             if (dgList.Rows.Count > 0)
             {
-                foreach(DataGridViewRow row in dgList.Rows)
+                foreach (DataGridViewRow row in dgList.Rows)
                 {
                     try
                     {
@@ -46,6 +62,7 @@ namespace Main.Offer
                     { }
                 }
             }
+            dgList.Update();
         }
 
         private void btAdd_Click(object sender, EventArgs e)

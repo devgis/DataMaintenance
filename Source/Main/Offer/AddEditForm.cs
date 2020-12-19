@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Main.SelectForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -132,6 +133,9 @@ namespace Main.Offer
 
         public bool Add()
         {
+            string newid = Guid.NewGuid().ToString();
+            List<string> sqls = new List<string>();
+            List<SqlParameter[]> parameterslist = new List<SqlParameter[]>();
             string sql = "insert into Offer (id,subjectname,starttime,state,donetime) values(@id,@subjectname,@starttime,@state,@donetime)";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("subjectname",SqlDbType.VarChar),
@@ -145,13 +149,38 @@ namespace Main.Offer
             parameters[1].Value = dtpStartTime.Value;
             parameters[2].Value = Convert.ToInt32(cbWhyOffer.SelectedValue);
             parameters[3].Value = dtpDoneTime.Value;
-            parameters[4].Value = Guid.NewGuid().ToString() ;
+            parameters[4].Value = newid;
+            sqls.Add(sql);
+            parameterslist.Add(parameters);
 
-            return SQLHelper.Instance.ExecSql(sql, parameters);
+
+            if (selectedIDS != null && selectedIDS.Count > 0)
+            {
+                foreach (var prodid in selectedIDS)
+                {
+                    sql = "insert into Offer_Product (offerid,productid) values(@offerid,@productid)";
+                    parameters = new SqlParameter[] {
+                         new SqlParameter("offerid",SqlDbType.VarChar),
+                         new SqlParameter("productid",SqlDbType.VarChar)
+                    };
+
+                    parameters[0].Value = newid;
+                    parameters[1].Value = prodid;
+
+                    sqls.Add(sql);
+                    parameterslist.Add(parameters);
+                }
+            }
+
+
+            return SQLHelper.Instance.ExecSqlByTran(sqls, parameterslist);
         }
 
         public bool Update()
         {
+            List<string> sqls = new List<string>();
+            List<SqlParameter[]> parameterslist = new List<SqlParameter[]>();
+
             string sql = "update Offer set subjectname=@subjectname,startTime=@starttime,state=@state,donetime=@donetime where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("subjectname",SqlDbType.VarChar),
@@ -166,8 +195,39 @@ namespace Main.Offer
             parameters[2].Value = Convert.ToInt32(cbWhyOffer.SelectedValue);
             parameters[3].Value = dtpDoneTime.Value;
             parameters[4].Value = ID;
+            sqls.Add(sql);
+            parameterslist.Add(parameters);
 
-            return SQLHelper.Instance.ExecSql(sql, parameters);
+
+            sql = "delete from Offer_Product where offerid=@offerid";
+            parameters = new SqlParameter[] {
+                         new SqlParameter("offerid",SqlDbType.VarChar)
+                    };
+
+            parameters[0].Value = ID;
+            sqls.Add(sql);
+            parameterslist.Add(parameters);
+
+            if (selectedIDS != null && selectedIDS.Count > 0)
+            {
+                foreach (var prodid in selectedIDS)
+                {
+                    sql = "insert into Offer_Product (offerid,productid) values(@offerid,@productid)";
+                    parameters = new SqlParameter[] {
+                         new SqlParameter("offerid",SqlDbType.VarChar),
+                         new SqlParameter("productid",SqlDbType.VarChar)
+                    };
+
+                    parameters[0].Value = ID;
+                    parameters[1].Value = prodid;
+
+                    sqls.Add(sql);
+                    parameterslist.Add(parameters);
+                }
+            }
+
+
+            return SQLHelper.Instance.ExecSqlByTran(sqls, parameterslist);
         }
 
         public void LoadData(string id)
@@ -195,6 +255,34 @@ namespace Main.Offer
                 }
                 catch
                 { }
+            }
+
+            //load products
+            sql = "select * from Product where id in (select productid from Offer_Product where OfferID=@offerid)";
+            parameters = new SqlParameter[] {
+                         new SqlParameter("offerid",SqlDbType.VarChar)
+                    };
+            parameters[0].Value = id;
+            DataTable dtproduct = SQLHelper.Instance.GetDataTable(sql, parameters);
+            
+            dgProductList.DataSource =dtproduct;
+
+            selectedIDS = new List<string>();
+            foreach (DataRow row in dtproduct.Rows)
+            {
+                selectedIDS.Add(row["id"].ToString());   
+            }
+        }
+
+        List<string> selectedIDS = new List<string>();
+
+        private void btSelect_Click(object sender, EventArgs e)
+        {
+            SelectProducts selectProducts = new SelectProducts(selectedIDS);
+            if (selectProducts.ShowDialog()==DialogResult.OK)
+            {
+                selectedIDS = selectProducts.SelectedIDS;
+                dgProductList.DataSource = selectProducts.SelectedRows;
             }
         }
 
