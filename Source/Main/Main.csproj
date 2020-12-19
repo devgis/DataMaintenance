@@ -108,6 +108,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectForms\SelectSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectSubject.Designer.cs">
+      <DependentUpon>SelectSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectOffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectOffer.Designer.cs">
+      <DependentUpon>SelectOffer.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectForms\SelectProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,18 @@
     </Compile>
     <Compile Include="SQLHelper.cs" />
     <Compile Include="StaticData.cs" />
+    <Compile Include="Subject\AddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\AddEditForm.Designer.cs">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subject\DataListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\DataListForm.Designer.cs">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,8 +168,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectForms\SelectSubject.resx">
+      <DependentUpon>SelectSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectOffer.resx">
+      <DependentUpon>SelectOffer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectForms\SelectProducts.resx">
       <DependentUpon>SelectProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subject\AddEditForm.resx">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subject\DataListForm.resx">
+      <DependentUpon>DataListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -170,8 +206,6 @@
     <Content Include="Images\exti.ICO" />
     <Content Include="Images\pv.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Subject\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

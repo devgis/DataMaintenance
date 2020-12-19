@@ -59,7 +59,8 @@
             this.帮助关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,7 +75,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(224, 26);
+            this.miExit.Size = new System.Drawing.Size(170, 26);
             this.miExit.Text = "退出系统(&E)";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -91,7 +92,7 @@
             // miOffer
             // 
             this.miOffer.Name = "miOffer";
-            this.miOffer.Size = new System.Drawing.Size(224, 26);
+            this.miOffer.Size = new System.Drawing.Size(169, 26);
             this.miOffer.Text = "Offer(&O)";
             this.miOffer.ToolTipText = "Offer管理";
             this.miOffer.Click += new System.EventHandler(this.miOffer_Click);
@@ -99,7 +100,7 @@
             // miProduct
             // 
             this.miProduct.Name = "miProduct";
-            this.miProduct.Size = new System.Drawing.Size(224, 26);
+            this.miProduct.Size = new System.Drawing.Size(169, 26);
             this.miProduct.Text = "Product(&P)";
             this.miProduct.ToolTipText = "Product管理";
             this.miProduct.Click += new System.EventHandler(this.miProduct_Click);
@@ -107,7 +108,7 @@
             // miSubject
             // 
             this.miSubject.Name = "miSubject";
-            this.miSubject.Size = new System.Drawing.Size(224, 26);
+            this.miSubject.Size = new System.Drawing.Size(169, 26);
             this.miSubject.Text = "Subject(&S)";
             this.miSubject.ToolTipText = "Subject管理";
             this.miSubject.Click += new System.EventHandler(this.miSubject_Click);
@@ -123,7 +124,7 @@
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(224, 26);
+            this.miAbout.Size = new System.Drawing.Size(143, 26);
             this.miAbout.Text = "关于(&A)";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
@@ -138,9 +139,9 @@
             this.toolSubject,
             this.toolStripSeparator1,
             this.toolStripButton6});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(900, 31);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -150,7 +151,7 @@
             this.toolStripButton1.Image = global::Main.Properties.Resources.exti;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.ToolTipText = "退出";
             this.toolStripButton1.Click += new System.EventHandler(this.miExit_Click);
@@ -158,7 +159,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // tiOffer
             // 
@@ -166,7 +167,7 @@
             this.tiOffer.Image = global::Main.Properties.Resources._3;
             this.tiOffer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tiOffer.Name = "tiOffer";
-            this.tiOffer.Size = new System.Drawing.Size(29, 24);
+            this.tiOffer.Size = new System.Drawing.Size(29, 28);
             this.tiOffer.Text = "Offer";
             this.tiOffer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.tiOffer.ToolTipText = "Offer管理";
@@ -178,7 +179,7 @@
             this.toolProduct.Image = global::Main.Properties.Resources.pv;
             this.toolProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolProduct.Name = "toolProduct";
-            this.toolProduct.Size = new System.Drawing.Size(29, 24);
+            this.toolProduct.Size = new System.Drawing.Size(29, 28);
             this.toolProduct.Text = "Product";
             this.toolProduct.ToolTipText = "Product管理";
             this.toolProduct.Click += new System.EventHandler(this.miProduct_Click);
@@ -189,7 +190,7 @@
             this.toolSubject.Image = global::Main.Properties.Resources._4;
             this.toolSubject.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolSubject.Name = "toolSubject";
-            this.toolSubject.Size = new System.Drawing.Size(29, 24);
+            this.toolSubject.Size = new System.Drawing.Size(29, 28);
             this.toolSubject.Text = "Subject";
             this.toolSubject.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.toolSubject.ToolTipText = "Subject管理";
@@ -198,7 +199,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripButton6
             // 
@@ -206,20 +207,22 @@
             this.toolStripButton6.Image = global::Main.Properties.Resources._6;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton6.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton6.Text = "关于";
             this.toolStripButton6.Click += new System.EventHandler(this.miAbout_Click);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据管理程序";

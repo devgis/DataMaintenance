@@ -30,6 +30,10 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgProductList = new System.Windows.Forms.DataGridView();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,10 +47,6 @@
             this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDoneTime = new System.Windows.Forms.DateTimePicker();
             this.btSelect = new System.Windows.Forms.Button();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductList)).BeginInit();
             this.panel1.SuspendLayout();
@@ -111,6 +111,43 @@
             this.dgProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProductList.Size = new System.Drawing.Size(440, 144);
             this.dgProductList.TabIndex = 21;
+            // 
+            // CID
+            // 
+            this.CID.DataPropertyName = "ID";
+            this.CID.HeaderText = "ID";
+            this.CID.MinimumWidth = 6;
+            this.CID.Name = "CID";
+            this.CID.ReadOnly = true;
+            this.CID.Visible = false;
+            this.CID.Width = 60;
+            // 
+            // CName
+            // 
+            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CName.DataPropertyName = "name";
+            this.CName.HeaderText = "Name";
+            this.CName.MinimumWidth = 6;
+            this.CName.Name = "CName";
+            this.CName.ReadOnly = true;
+            // 
+            // CPrice
+            // 
+            this.CPrice.DataPropertyName = "price";
+            this.CPrice.HeaderText = "Price";
+            this.CPrice.MinimumWidth = 6;
+            this.CPrice.Name = "CPrice";
+            this.CPrice.ReadOnly = true;
+            this.CPrice.Width = 80;
+            // 
+            // CQuantity
+            // 
+            this.CQuantity.DataPropertyName = "quantity";
+            this.CQuantity.HeaderText = "Quantity";
+            this.CQuantity.MinimumWidth = 6;
+            this.CQuantity.Name = "CQuantity";
+            this.CQuantity.ReadOnly = true;
+            this.CQuantity.Width = 80;
             // 
             // label5
             // 
@@ -240,43 +277,6 @@
             this.btSelect.Text = "选择";
             this.btSelect.UseVisualStyleBackColor = true;
             this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
-            // 
-            // CID
-            // 
-            this.CID.DataPropertyName = "ID";
-            this.CID.HeaderText = "ID";
-            this.CID.MinimumWidth = 6;
-            this.CID.Name = "CID";
-            this.CID.ReadOnly = true;
-            this.CID.Visible = false;
-            this.CID.Width = 60;
-            // 
-            // CName
-            // 
-            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CName.DataPropertyName = "name";
-            this.CName.HeaderText = "Name";
-            this.CName.MinimumWidth = 6;
-            this.CName.Name = "CName";
-            this.CName.ReadOnly = true;
-            // 
-            // CPrice
-            // 
-            this.CPrice.DataPropertyName = "price";
-            this.CPrice.HeaderText = "Price";
-            this.CPrice.MinimumWidth = 6;
-            this.CPrice.Name = "CPrice";
-            this.CPrice.ReadOnly = true;
-            this.CPrice.Width = 80;
-            // 
-            // CQuantity
-            // 
-            this.CQuantity.DataPropertyName = "quantity";
-            this.CQuantity.HeaderText = "Quantity";
-            this.CQuantity.MinimumWidth = 6;
-            this.CQuantity.Name = "CQuantity";
-            this.CQuantity.ReadOnly = true;
-            this.CQuantity.Width = 80;
             // 
             // AddEditForm
             // 

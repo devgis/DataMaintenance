@@ -41,7 +41,10 @@ namespace Main
 
         private void miSubject_Click(object sender, EventArgs e)
         {
-
+            Subject.DataListForm dbAccessForm = new Subject.DataListForm();
+            dbAccessForm.MdiParent = this;
+            dbAccessForm.Dock = DockStyle.Fill;
+            dbAccessForm.Show();
         }
 
         private void miAbout_Click(object sender, EventArgs e)
