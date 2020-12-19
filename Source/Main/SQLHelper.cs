@@ -79,7 +79,7 @@ namespace Main
                     sqlCmd.Connection = SqlConn;
                     return sqlCmd.ExecuteNonQuery() > 0;
                 }
-                catch
+                catch(Exception ex)
                 {
                     return false;
                 }

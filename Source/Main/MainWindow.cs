@@ -25,7 +25,10 @@ namespace Main
 
         private void miOffer_Click(object sender, EventArgs e)
         {
-
+            Offer.DataListForm dbAccessForm = new Offer.DataListForm();
+            dbAccessForm.MdiParent = this;
+            dbAccessForm.Dock = DockStyle.Fill;
+            dbAccessForm.Show();
         }
 
         private void miProduct_Click(object sender, EventArgs e)
