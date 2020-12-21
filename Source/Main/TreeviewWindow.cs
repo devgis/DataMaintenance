@@ -23,45 +23,52 @@ namespace Main
             {
                 foreach (Subject s in list)
                 {
-                    TreeNode t = new TreeNode("Subject:"+s.name);
-                    if (s.net != null && s.net.Count > 0)
-                    {
-                        TreeNode tSubject= new TreeNode("SubjectLists:" );
-                        foreach (var subsub in s.net)
-                        {
-                            TreeNode tsubsub = new TreeNode(subsub.name);
-                            tSubject.Nodes.Add(tsubsub);
-                        }
-                        t.Nodes.Add(tSubject);
-                    }
-
-                    if (s.onhand != null && s.onhand.Count > 0)
-                    {
-                        TreeNode tSubject = new TreeNode("ProductLists:");
-                        foreach (var subsub in s.onhand)
-                        {
-                            TreeNode tsubsub = new TreeNode(subsub.name+" " +subsub.price+" "+subsub.quantity);
-                            tSubject.Nodes.Add(tsubsub);
-                        }
-                        t.Nodes.Add(tSubject);
-                    }
-
-                    if (s.plan != null && s.plan.Count > 0)
-                    {
-                        TreeNode tSubject = new TreeNode("OfferLists:");
-                        foreach (var offer in s.plan)
-                        {
-                            TreeNode tsubsub = new TreeNode(offer.subjectname);
-                            tSubject.Nodes.Add(tsubsub);
-                        }
-                        t.Nodes.Add(tSubject);
-                    }
+                    TreeNode t = CreateSubjectNode(s);
 
                     tvSubjects.Nodes.Add(t);
                 }
 
             }
             tvSubjects.ExpandAll();
+        }
+
+        private TreeNode CreateSubjectNode(Subject s)
+        {
+            TreeNode t = new TreeNode("Subject:" + s.name);
+            if (s.net != null && s.net.Count > 0)
+            {
+                TreeNode tSubject = new TreeNode("SubjectLists:");
+                foreach (var subsub in s.net)
+                {
+                    TreeNode tsubsub = CreateSubjectNode(subsub);
+                    tSubject.Nodes.Add(tsubsub);
+                }
+                t.Nodes.Add(tSubject);
+            }
+
+            if (s.onhand != null && s.onhand.Count > 0)
+            {
+                TreeNode tSubject = new TreeNode("ProductLists:");
+                foreach (var subsub in s.onhand)
+                {
+                    TreeNode tsubsub = new TreeNode(subsub.name + " " + subsub.price + " " + subsub.quantity);
+                    tSubject.Nodes.Add(tsubsub);
+                }
+                t.Nodes.Add(tSubject);
+            }
+
+            if (s.plan != null && s.plan.Count > 0)
+            {
+                TreeNode tSubject = new TreeNode("OfferLists:");
+                foreach (var offer in s.plan)
+                {
+                    TreeNode tsubsub = new TreeNode(offer.subjectname);
+                    tSubject.Nodes.Add(tsubsub);
+                }
+                t.Nodes.Add(tSubject);
+            }
+
+            return t;
         }
 
         public List<Subject> GetList()
@@ -99,7 +106,7 @@ namespace Main
             return list;
         }
 
-        public Subject GetSubJect(string subjectid, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
+        private Subject GetSubJect(string subjectid, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
         {
             DataRow[] querysubject = dtSubject.Select(string.Format("id='{0}'", subjectid));
             if (string.IsNullOrEmpty(subjectid)||querysubject == null || querysubject.Length <= 0)
