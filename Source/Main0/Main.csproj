@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{832A2D68-C1BE-4CB0-8534-CBE1A588E173}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Main</RootNamespace>
+    <AssemblyName>Main</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offer\AddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offer\AddEditForm.Designer.cs">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offer\DataListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offer\DataListForm.Designer.cs">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\AddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\AddEditForm.Designer.cs">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\DataListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\DataListForm.Designer.cs">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectForms\SelectSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectSubject.Designer.cs">
+      <DependentUpon>SelectSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectOffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectOffer.Designer.cs">
+      <DependentUpon>SelectOffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectProducts.Designer.cs">
+      <DependentUpon>SelectProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQLHelper.cs" />
+    <Compile Include="StaticData.cs" />
+    <Compile Include="Subject\AddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\AddEditForm.Designer.cs">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subject\DataListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\DataListForm.Designer.cs">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offer\AddEditForm.resx">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offer\DataListForm.resx">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\AddEditForm.resx">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\DataListForm.resx">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectForms\SelectSubject.resx">
+      <DependentUpon>SelectSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectOffer.resx">
+      <DependentUpon>SelectOffer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectProducts.resx">
+      <DependentUpon>SelectProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subject\AddEditForm.resx">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subject\DataListForm.resx">
+      <DependentUpon>DataListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\4.ico" />
+    <Content Include="Images\2.ico" />
+    <Content Include="Images\3.ico" />
+    <Content Include="Images\5.ico" />
+    <Content Include="Images\6.ico" />
+    <Content Include="Images\7.ico" />
+    <Content Include="Images\exti.ICO" />
+    <Content Include="Images\pv.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
