@@ -88,46 +88,28 @@ namespace Main.Offer
                 return false;
             }
 
-            //if (string.IsNullOrEmpty(tbPrice.Text.Trim()))
-            //{
-            //    MessageBox.Show("Price不能为空");
-            //    tbPrice.Focus();
-            //    return false;
-            //}
-            //else
-            //{
-            //    try {
-            //        Convert.ToDouble(tbPrice.Text);
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Price必须为数值类型");
-            //        tbPrice.Focus();
-            //        return false;
-            //    }
+            foreach (DataGridViewRow row in dgProductList.Rows)
+            {
+                decimal quantity = 0m;
+                try
+                {
+                    quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    if (quantity <= 0)
+                    {
+                        MessageBox.Show("Quantity必须为为大于0的数值类型！");
+                        dgProductList.Focus();
+                        return false;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Quantity必须为数值类型！");
+                    dgProductList.Focus();
+                    return false;
+                }
+            }
 
-            //}
 
-            //if (string.IsNullOrEmpty(tbQuantity.Text.Trim()))
-            //{
-            //    MessageBox.Show("Quantity不能为空");
-            //    tbQuantity.Focus();
-            //    return false;
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        Convert.ToDouble(tbQuantity.Text);
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Quantity必须为数值类型");
-            //        tbQuantity.Focus();
-            //        return false;
-            //    }
-
-            //}
             return true;
         }
 
@@ -156,22 +138,31 @@ namespace Main.Offer
 
             if (selectedIDS != null && selectedIDS.Count > 0)
             {
-                foreach (var prodid in selectedIDS)
+                foreach (DataGridViewRow row in dgProductList.Rows)
                 {
-                    sql = "insert into Offer_Product (offerid,productid) values(@offerid,@productid)";
+                    string prodid = row.Cells["CID"].Value.ToString();
+                    decimal quantity = 0m;
+                    try
+                    {
+                        quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    }
+                    catch
+                    { }
+                    sql = "insert into Offer_Product (offerid,productid,quantity) values(@offerid,@productid,@quantity)";
                     parameters = new SqlParameter[] {
                          new SqlParameter("offerid",SqlDbType.VarChar),
-                         new SqlParameter("productid",SqlDbType.VarChar)
+                         new SqlParameter("productid",SqlDbType.VarChar),
+                         new SqlParameter("quantity",SqlDbType.Decimal)
                     };
 
                     parameters[0].Value = newid;
                     parameters[1].Value = prodid;
+                    parameters[2].Value = quantity;
 
                     sqls.Add(sql);
                     parameterslist.Add(parameters);
                 }
             }
-
 
             return SQLHelper.Instance.ExecSqlByTran(sqls, parameterslist);
         }
@@ -210,16 +201,26 @@ namespace Main.Offer
 
             if (selectedIDS != null && selectedIDS.Count > 0)
             {
-                foreach (var prodid in selectedIDS)
+                foreach (DataGridViewRow row in dgProductList.Rows)
                 {
-                    sql = "insert into Offer_Product (offerid,productid) values(@offerid,@productid)";
+                    string prodid = row.Cells["CID"].Value.ToString();
+                    decimal quantity =0m;
+                    try
+                    {
+                        quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    }
+                    catch
+                    { }
+                    sql = "insert into Offer_Product (offerid,productid,quantity) values(@offerid,@productid,@quantity)";
                     parameters = new SqlParameter[] {
                          new SqlParameter("offerid",SqlDbType.VarChar),
-                         new SqlParameter("productid",SqlDbType.VarChar)
+                         new SqlParameter("productid",SqlDbType.VarChar),
+                         new SqlParameter("quantity",SqlDbType.Decimal)
                     };
 
                     parameters[0].Value = ID;
                     parameters[1].Value = prodid;
+                    parameters[2].Value = quantity;
 
                     sqls.Add(sql);
                     parameterslist.Add(parameters);
@@ -258,7 +259,7 @@ namespace Main.Offer
             }
 
             //load products
-            sql = "select * from Product where id in (select productid from Offer_Product where OfferID=@offerid)";
+            sql = "select p.id,p.name,p.price,op.quantity from Offer o left join Offer_Product op on o.ID=op.OfferID left join Product p on op.ProductID=p.id where o.ID=@offerid";
             parameters = new SqlParameter[] {
                          new SqlParameter("offerid",SqlDbType.VarChar)
                     };

@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btSelectOffer = new System.Windows.Forms.Button();
+            this.dgOfferList = new System.Windows.Forms.DataGridView();
+            this.dgSubjectList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductList = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbSubjectname = new System.Windows.Forms.TextBox();
@@ -41,24 +43,22 @@
             this.Cancel = new System.Windows.Forms.Button();
             this.btOK = new System.Windows.Forms.Button();
             this.btSelect = new System.Windows.Forms.Button();
-            this.dgSubjectList = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btSelectSubject = new System.Windows.Forms.Button();
-            this.dgOfferList = new System.Windows.Forms.DataGridView();
-            this.btSelectOffer = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDoneTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgOfferList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSubjectList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductList)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSubjectList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgOfferList)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -116,6 +116,89 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 619);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Location = new System.Drawing.Point(38, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 30);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "OfferList";
+            // 
+            // btSelectOffer
+            // 
+            this.btSelectOffer.Font = new System.Drawing.Font("宋体", 8F);
+            this.btSelectOffer.Location = new System.Drawing.Point(569, 223);
+            this.btSelectOffer.Name = "btSelectOffer";
+            this.btSelectOffer.Size = new System.Drawing.Size(44, 23);
+            this.btSelectOffer.TabIndex = 26;
+            this.btSelectOffer.Text = "选择";
+            this.btSelectOffer.UseVisualStyleBackColor = true;
+            this.btSelectOffer.Click += new System.EventHandler(this.btSelectOffer_Click);
+            // 
+            // dgOfferList
+            // 
+            this.dgOfferList.AllowUserToAddRows = false;
+            this.dgOfferList.AllowUserToDeleteRows = false;
+            this.dgOfferList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgOfferList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.CDoneTime});
+            this.dgOfferList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgOfferList.Location = new System.Drawing.Point(123, 223);
+            this.dgOfferList.MultiSelect = false;
+            this.dgOfferList.Name = "dgOfferList";
+            this.dgOfferList.ReadOnly = true;
+            this.dgOfferList.RowHeadersWidth = 10;
+            this.tableLayoutPanel1.SetRowSpan(this.dgOfferList, 5);
+            this.dgOfferList.RowTemplate.Height = 27;
+            this.dgOfferList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgOfferList.Size = new System.Drawing.Size(440, 144);
+            this.dgOfferList.TabIndex = 25;
+            // 
+            // dgSubjectList
+            // 
+            this.dgSubjectList.AllowUserToAddRows = false;
+            this.dgSubjectList.AllowUserToDeleteRows = false;
+            this.dgSubjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSubjectList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgSubjectList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgSubjectList.Location = new System.Drawing.Point(123, 73);
+            this.dgSubjectList.MultiSelect = false;
+            this.dgSubjectList.Name = "dgSubjectList";
+            this.dgSubjectList.ReadOnly = true;
+            this.dgSubjectList.RowHeadersWidth = 10;
+            this.tableLayoutPanel1.SetRowSpan(this.dgSubjectList, 5);
+            this.dgSubjectList.RowTemplate.Height = 27;
+            this.dgSubjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSubjectList.Size = new System.Drawing.Size(440, 144);
+            this.dgSubjectList.TabIndex = 24;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // dgProductList
             // 
             this.dgProductList.AllowUserToAddRows = false;
@@ -130,50 +213,12 @@
             this.dgProductList.Location = new System.Drawing.Point(123, 373);
             this.dgProductList.MultiSelect = false;
             this.dgProductList.Name = "dgProductList";
-            this.dgProductList.ReadOnly = true;
             this.dgProductList.RowHeadersWidth = 10;
             this.tableLayoutPanel1.SetRowSpan(this.dgProductList, 5);
             this.dgProductList.RowTemplate.Height = 27;
             this.dgProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProductList.Size = new System.Drawing.Size(440, 144);
             this.dgProductList.TabIndex = 21;
-            // 
-            // CID
-            // 
-            this.CID.DataPropertyName = "ID";
-            this.CID.HeaderText = "ID";
-            this.CID.MinimumWidth = 6;
-            this.CID.Name = "CID";
-            this.CID.ReadOnly = true;
-            this.CID.Visible = false;
-            this.CID.Width = 60;
-            // 
-            // CName
-            // 
-            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CName.DataPropertyName = "name";
-            this.CName.HeaderText = "Name";
-            this.CName.MinimumWidth = 6;
-            this.CName.Name = "CName";
-            this.CName.ReadOnly = true;
-            // 
-            // CPrice
-            // 
-            this.CPrice.DataPropertyName = "price";
-            this.CPrice.HeaderText = "Price";
-            this.CPrice.MinimumWidth = 6;
-            this.CPrice.Name = "CPrice";
-            this.CPrice.ReadOnly = true;
-            this.CPrice.Width = 80;
-            // 
-            // CQuantity
-            // 
-            this.CQuantity.DataPropertyName = "quantity";
-            this.CQuantity.HeaderText = "Quantity";
-            this.CQuantity.MinimumWidth = 6;
-            this.CQuantity.Name = "CQuantity";
-            this.CQuantity.ReadOnly = true;
-            this.CQuantity.Width = 80;
             // 
             // label5
             // 
@@ -245,26 +290,6 @@
             this.btSelect.UseVisualStyleBackColor = true;
             this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
             // 
-            // dgSubjectList
-            // 
-            this.dgSubjectList.AllowUserToAddRows = false;
-            this.dgSubjectList.AllowUserToDeleteRows = false;
-            this.dgSubjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSubjectList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dgSubjectList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgSubjectList.Location = new System.Drawing.Point(123, 73);
-            this.dgSubjectList.MultiSelect = false;
-            this.dgSubjectList.Name = "dgSubjectList";
-            this.dgSubjectList.ReadOnly = true;
-            this.dgSubjectList.RowHeadersWidth = 10;
-            this.tableLayoutPanel1.SetRowSpan(this.dgSubjectList, 5);
-            this.dgSubjectList.RowTemplate.Height = 27;
-            this.dgSubjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSubjectList.Size = new System.Drawing.Size(440, 144);
-            this.dgSubjectList.TabIndex = 24;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -286,68 +311,41 @@
             this.btSelectSubject.UseVisualStyleBackColor = true;
             this.btSelectSubject.Click += new System.EventHandler(this.btSelectSubject_Click);
             // 
-            // dgOfferList
+            // CID
             // 
-            this.dgOfferList.AllowUserToAddRows = false;
-            this.dgOfferList.AllowUserToDeleteRows = false;
-            this.dgOfferList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgOfferList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.CDoneTime});
-            this.dgOfferList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgOfferList.Location = new System.Drawing.Point(123, 223);
-            this.dgOfferList.MultiSelect = false;
-            this.dgOfferList.Name = "dgOfferList";
-            this.dgOfferList.ReadOnly = true;
-            this.dgOfferList.RowHeadersWidth = 10;
-            this.tableLayoutPanel1.SetRowSpan(this.dgOfferList, 5);
-            this.dgOfferList.RowTemplate.Height = 27;
-            this.dgOfferList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgOfferList.Size = new System.Drawing.Size(440, 144);
-            this.dgOfferList.TabIndex = 25;
+            this.CID.DataPropertyName = "ID";
+            this.CID.HeaderText = "ID";
+            this.CID.MinimumWidth = 6;
+            this.CID.Name = "CID";
+            this.CID.ReadOnly = true;
+            this.CID.Visible = false;
+            this.CID.Width = 60;
             // 
-            // btSelectOffer
+            // CName
             // 
-            this.btSelectOffer.Font = new System.Drawing.Font("宋体", 8F);
-            this.btSelectOffer.Location = new System.Drawing.Point(569, 223);
-            this.btSelectOffer.Name = "btSelectOffer";
-            this.btSelectOffer.Size = new System.Drawing.Size(44, 23);
-            this.btSelectOffer.TabIndex = 26;
-            this.btSelectOffer.Text = "选择";
-            this.btSelectOffer.UseVisualStyleBackColor = true;
-            this.btSelectOffer.Click += new System.EventHandler(this.btSelectOffer_Click);
+            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CName.DataPropertyName = "name";
+            this.CName.HeaderText = "Name";
+            this.CName.MinimumWidth = 6;
+            this.CName.Name = "CName";
+            this.CName.ReadOnly = true;
             // 
-            // label3
+            // CPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(38, 220);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 30);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "OfferList";
+            this.CPrice.DataPropertyName = "price";
+            this.CPrice.HeaderText = "Price";
+            this.CPrice.MinimumWidth = 6;
+            this.CPrice.Name = "CPrice";
+            this.CPrice.ReadOnly = true;
+            this.CPrice.Width = 80;
             // 
-            // dataGridViewTextBoxColumn1
+            // CQuantity
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.CQuantity.DataPropertyName = "quantity";
+            this.CQuantity.HeaderText = "Quantity";
+            this.CQuantity.MinimumWidth = 6;
+            this.CQuantity.Name = "CQuantity";
+            this.CQuantity.Width = 80;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -361,12 +359,12 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn6.DataPropertyName = "name";
             this.dataGridViewTextBoxColumn6.HeaderText = "Name";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 143;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -409,10 +407,10 @@
             this.Text = "AddEditForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgOfferList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSubjectList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductList)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgSubjectList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgOfferList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -428,10 +426,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btSelect;
         private System.Windows.Forms.DataGridView dgProductList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CQuantity;
         private System.Windows.Forms.DataGridView dgOfferList;
         private System.Windows.Forms.DataGridView dgSubjectList;
         private System.Windows.Forms.Label label1;
@@ -440,6 +434,10 @@
         private System.Windows.Forms.Button btSelectOffer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;

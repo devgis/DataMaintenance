@@ -77,47 +77,26 @@ namespace Main.Subject
                 return false;
             }
 
-
-            //if (string.IsNullOrEmpty(tbPrice.Text.Trim()))
-            //{
-            //    MessageBox.Show("Price不能为空");
-            //    tbPrice.Focus();
-            //    return false;
-            //}
-            //else
-            //{
-            //    try {
-            //        Convert.ToDouble(tbPrice.Text);
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Price必须为数值类型");
-            //        tbPrice.Focus();
-            //        return false;
-            //    }
-
-            //}
-
-            //if (string.IsNullOrEmpty(tbQuantity.Text.Trim()))
-            //{
-            //    MessageBox.Show("Quantity不能为空");
-            //    tbQuantity.Focus();
-            //    return false;
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        Convert.ToDouble(tbQuantity.Text);
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Quantity必须为数值类型");
-            //        tbQuantity.Focus();
-            //        return false;
-            //    }
-
-            //}
+            foreach (DataGridViewRow row in dgProductList.Rows)
+            {
+                decimal quantity = 0m;
+                try
+                {
+                    quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    if (quantity <= 0)
+                    {
+                        MessageBox.Show("Quantity必须为为大于0的数值类型！");
+                        dgProductList.Focus();
+                        return false;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Quantity必须为数值类型！");
+                    dgProductList.Focus();
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -140,16 +119,26 @@ namespace Main.Subject
             //products
             if (selectedIDS != null && selectedIDS.Count > 0)
             {
-                foreach (var prodid in selectedIDS)
+                foreach (DataGridViewRow row in dgProductList.Rows)
                 {
-                    sql = "insert into Subject_Product (subjectid,productid) values(@subjectid,@productid)";
+                    string prodid = row.Cells["CID"].Value.ToString();
+                    decimal quantity = 0m;
+                    try
+                    {
+                        quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    }
+                    catch
+                    { }
+                    sql = "insert into Subject_Product (subjectid,productid,quantity) values(@subjectid,@productid,@quantity)";
                     parameters = new SqlParameter[] {
-                         new SqlParameter("subjectid",SqlDbType.VarChar),
-                         new SqlParameter("productid",SqlDbType.VarChar)
+                        new SqlParameter("subjectid",SqlDbType.VarChar),
+                         new SqlParameter("productid",SqlDbType.VarChar),
+                         new SqlParameter("quantity",SqlDbType.Decimal)
                     };
 
                     parameters[0].Value = newid;
                     parameters[1].Value = prodid;
+                    parameters[2].Value = quantity;
 
                     sqls.Add(sql);
                     parameterslist.Add(parameters);
@@ -245,16 +234,26 @@ namespace Main.Subject
             //products
             if (selectedIDS != null && selectedIDS.Count > 0)
             {
-                foreach (var prodid in selectedIDS)
+                foreach (DataGridViewRow row in dgProductList.Rows)
                 {
-                    sql = "insert into Subject_Product (subjectid,productid) values(@subjectid,@productid)";
+                    string prodid = row.Cells["CID"].Value.ToString();
+                    decimal quantity = 0m;
+                    try
+                    {
+                        quantity = Convert.ToDecimal(row.Cells["CQuantity"].Value);
+                    }
+                    catch
+                    { }
+                    sql = "insert into Subject_Product (subjectid,productid,quantity) values(@subjectid,@productid,@quantity)";
                     parameters = new SqlParameter[] {
-                         new SqlParameter("subjectid",SqlDbType.VarChar),
-                         new SqlParameter("productid",SqlDbType.VarChar)
+                        new SqlParameter("subjectid",SqlDbType.VarChar),
+                         new SqlParameter("productid",SqlDbType.VarChar),
+                         new SqlParameter("quantity",SqlDbType.Decimal)
                     };
 
                     parameters[0].Value = ID;
                     parameters[1].Value = prodid;
+                    parameters[2].Value = quantity;
 
                     sqls.Add(sql);
                     parameterslist.Add(parameters);
@@ -319,7 +318,7 @@ namespace Main.Subject
             }
 
             //load products
-            sql = "select * from Product where id in (select productid from Subject_Product where subjectid=@subjectid)";
+            sql = "select p.id,p.name,p.price,sp.quantity from Subject s left join Subject_Product sp on s.ID=sp.SubjectID left join Product p on sp.ProductID=p.id where s.ID=@subjectid";
             parameters = new SqlParameter[] {
                          new SqlParameter("subjectid",SqlDbType.VarChar)
                     };
@@ -401,25 +400,5 @@ namespace Main.Subject
                 dgOfferList.DataSource = selectOffer.SelectedRows;
             }
         }
-
-        //public bool ExistsID(int id)
-        //{
-        //    string sql = "select * from Student where ID=?";
-        //    SqlParameter[] parameters = new SqlParameter[] {
-        //                 new SqlParameter("ID",OleDbType.Numeric)
-        //            };
-
-        //    parameters[0].Value = id;
-
-        //    DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }
