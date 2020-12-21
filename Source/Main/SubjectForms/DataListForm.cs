@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main.Offer
+namespace Main.SubjectForms
 {
     public partial class DataListForm : Form
     {
@@ -25,7 +25,7 @@ namespace Main.Offer
 
         public void LoadData()
         {
-            string sql = "select * from Offer";
+            string sql = "select * from Subject";
             if (!string.IsNullOrEmpty(tbKeywords.Text.Trim()))
             {
                 sql += (" where " + string.Format("subjectname like '%{0}%'", tbKeywords.Text));
@@ -33,36 +33,6 @@ namespace Main.Offer
 
             DataTable dt = SQLHelper.Instance.GetDataTable(sql);
             dgList.DataSource = dt;
-
-
-            dgList.CellValueChanged += DgList_CellValueChanged;
-            dgList.BindingContextChanged += DgList_DataSourceChanged;
-        }
-
-        private void DgList_DataSourceChanged(object sender, EventArgs e)
-        {
-            UpdateColumn();
-        }
-
-        private void DgList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            UpdateColumn();
-        }
-        private void UpdateColumn()
-        {
-            if (dgList.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgList.Rows)
-                {
-                    try
-                    {
-                        row.Cells["CStateText"].Value = StaticData.GetKey(Convert.ToInt32(row.Cells["CState"].Value));
-                    }
-                    catch
-                    { }
-                }
-            }
-            dgList.Update();
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -113,7 +83,7 @@ namespace Main.Offer
         }
         private bool Delete(string id)
         {
-            string sql = "delete from Offer where id=@id";
+            string sql = "delete from Subject where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("id",SqlDbType.VarChar)
                     };

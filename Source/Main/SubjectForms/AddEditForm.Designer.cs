@@ -1,4 +1,4 @@
-﻿namespace Main.Subject
+﻿namespace Main.SubjectForms
 {
     partial class AddEditForm
     {

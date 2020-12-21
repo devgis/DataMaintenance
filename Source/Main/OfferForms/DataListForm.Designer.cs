@@ -1,4 +1,4 @@
-﻿namespace Main.Product
+﻿namespace Main.OfferForms
 {
     partial class DataListForm
     {
@@ -36,9 +36,11 @@
             this.tbKeywords = new System.Windows.Forms.TextBox();
             this.dgList = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSubjectname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CStateText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDoneTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.SuspendLayout();
@@ -122,9 +124,11 @@
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
-            this.CName,
-            this.CPrice,
-            this.CQuantity});
+            this.CSubjectname,
+            this.CStartTime,
+            this.CState,
+            this.CStateText,
+            this.CDoneTime});
             this.tableLayoutPanel1.SetColumnSpan(this.dgList, 6);
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgList.Location = new System.Drawing.Point(3, 33);
@@ -147,32 +151,50 @@
             this.CID.Visible = false;
             this.CID.Width = 60;
             // 
-            // CName
+            // CSubjectname
             // 
-            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CName.DataPropertyName = "name";
-            this.CName.HeaderText = "Name";
-            this.CName.MinimumWidth = 6;
-            this.CName.Name = "CName";
-            this.CName.ReadOnly = true;
+            this.CSubjectname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CSubjectname.DataPropertyName = "subjectname";
+            this.CSubjectname.HeaderText = "Subjectname";
+            this.CSubjectname.MinimumWidth = 6;
+            this.CSubjectname.Name = "CSubjectname";
+            this.CSubjectname.ReadOnly = true;
             // 
-            // CPrice
+            // CStartTime
             // 
-            this.CPrice.DataPropertyName = "price";
-            this.CPrice.HeaderText = "Price";
-            this.CPrice.MinimumWidth = 6;
-            this.CPrice.Name = "CPrice";
-            this.CPrice.ReadOnly = true;
-            this.CPrice.Width = 125;
+            this.CStartTime.DataPropertyName = "startTime";
+            this.CStartTime.HeaderText = "StartTime";
+            this.CStartTime.MinimumWidth = 6;
+            this.CStartTime.Name = "CStartTime";
+            this.CStartTime.ReadOnly = true;
+            this.CStartTime.Width = 125;
             // 
-            // CQuantity
+            // CState
             // 
-            this.CQuantity.DataPropertyName = "quantity";
-            this.CQuantity.HeaderText = "Quantity";
-            this.CQuantity.MinimumWidth = 6;
-            this.CQuantity.Name = "CQuantity";
-            this.CQuantity.ReadOnly = true;
-            this.CQuantity.Width = 125;
+            this.CState.DataPropertyName = "state";
+            this.CState.HeaderText = "State";
+            this.CState.MinimumWidth = 6;
+            this.CState.Name = "CState";
+            this.CState.ReadOnly = true;
+            this.CState.Visible = false;
+            this.CState.Width = 125;
+            // 
+            // CStateText
+            // 
+            this.CStateText.HeaderText = "State";
+            this.CStateText.MinimumWidth = 6;
+            this.CStateText.Name = "CStateText";
+            this.CStateText.ReadOnly = true;
+            this.CStateText.Width = 125;
+            // 
+            // CDoneTime
+            // 
+            this.CDoneTime.DataPropertyName = "doneTime";
+            this.CDoneTime.HeaderText = "DoneTime";
+            this.CDoneTime.MinimumWidth = 6;
+            this.CDoneTime.Name = "CDoneTime";
+            this.CDoneTime.ReadOnly = true;
+            this.CDoneTime.Width = 125;
             // 
             // DataListForm
             // 
@@ -182,7 +204,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DataListForm";
-            this.Text = "Product管理";
+            this.Text = "Offer管理";
             this.Load += new System.EventHandler(this.DBAccessForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -201,8 +223,10 @@
         private System.Windows.Forms.TextBox tbKeywords;
         private System.Windows.Forms.DataGridView dgList;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSubjectname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CStartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CState;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CStateText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDoneTime;
     }
 }

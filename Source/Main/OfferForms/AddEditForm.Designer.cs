@@ -1,4 +1,4 @@
-﻿namespace Main.Offer
+﻿namespace Main.OfferForms
 {
     partial class AddEditForm
     {

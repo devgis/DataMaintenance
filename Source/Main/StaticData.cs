@@ -26,5 +26,5 @@ namespace Main
         }
     }
 
-    public enum WhyOffer { OFFERER = 1000, OFFEREE, DEAL, HELPLESS };
+    //public enum WhyOffer { OFFERER = 1000, OFFEREE, DEAL, HELPLESS };
 }

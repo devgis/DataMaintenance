@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main.Subject
+namespace Main.ProductForms
 {
     public partial class DataListForm : Form
     {
@@ -25,10 +25,10 @@ namespace Main.Subject
 
         public void LoadData()
         {
-            string sql = "select * from Subject";
+            string sql = "select * from Product";
             if (!string.IsNullOrEmpty(tbKeywords.Text.Trim()))
             {
-                sql += (" where " + string.Format("subjectname like '%{0}%'", tbKeywords.Text));
+                sql += (" where " + string.Format("name like '%{0}%'", tbKeywords.Text));
             }
 
             DataTable dt = SQLHelper.Instance.GetDataTable(sql);
@@ -83,7 +83,7 @@ namespace Main.Subject
         }
         private bool Delete(string id)
         {
-            string sql = "delete from Subject where id=@id";
+            string sql = "delete from Product where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("id",SqlDbType.VarChar)
                     };

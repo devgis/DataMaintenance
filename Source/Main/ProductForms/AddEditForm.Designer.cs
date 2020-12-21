@@ -1,4 +1,4 @@
-﻿namespace Main.Product
+﻿namespace Main.ProductForms
 {
     partial class AddEditForm
     {

@@ -31,15 +31,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbKeywords = new System.Windows.Forms.TextBox();
             this.dgList = new System.Windows.Forms.DataGridView();
-            this.btQuery = new System.Windows.Forms.Button();
-            this.btCancel = new System.Windows.Forms.Button();
-            this.btOK = new System.Windows.Forms.Button();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDoneTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btQuery = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btOK = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.SuspendLayout();
@@ -101,36 +101,6 @@
             this.dgList.Size = new System.Drawing.Size(562, 342);
             this.dgList.TabIndex = 5;
             // 
-            // btQuery
-            // 
-            this.btQuery.Location = new System.Drawing.Point(123, 3);
-            this.btQuery.Name = "btQuery";
-            this.btQuery.Size = new System.Drawing.Size(52, 23);
-            this.btQuery.TabIndex = 3;
-            this.btQuery.Text = "查询";
-            this.btQuery.UseVisualStyleBackColor = true;
-            this.btQuery.Click += new System.EventHandler(this.btQuery_Click);
-            // 
-            // btCancel
-            // 
-            this.btCancel.Location = new System.Drawing.Point(183, 3);
-            this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(54, 23);
-            this.btCancel.TabIndex = 7;
-            this.btCancel.Text = "取消";
-            this.btCancel.UseVisualStyleBackColor = true;
-            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
-            // 
-            // btOK
-            // 
-            this.btOK.Location = new System.Drawing.Point(243, 3);
-            this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(54, 23);
-            this.btOK.TabIndex = 6;
-            this.btOK.Text = "确定";
-            this.btOK.UseVisualStyleBackColor = true;
-            this.btOK.Click += new System.EventHandler(this.btOK_Click);
-            // 
             // CID
             // 
             this.CID.DataPropertyName = "ID";
@@ -180,6 +150,36 @@
             this.CDoneTime.MinimumWidth = 6;
             this.CDoneTime.Name = "CDoneTime";
             this.CDoneTime.Width = 80;
+            // 
+            // btQuery
+            // 
+            this.btQuery.Location = new System.Drawing.Point(123, 3);
+            this.btQuery.Name = "btQuery";
+            this.btQuery.Size = new System.Drawing.Size(52, 23);
+            this.btQuery.TabIndex = 3;
+            this.btQuery.Text = "查询";
+            this.btQuery.UseVisualStyleBackColor = true;
+            this.btQuery.Click += new System.EventHandler(this.btQuery_Click);
+            // 
+            // btCancel
+            // 
+            this.btCancel.Location = new System.Drawing.Point(183, 3);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(54, 23);
+            this.btCancel.TabIndex = 7;
+            this.btCancel.Text = "取消";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // btOK
+            // 
+            this.btOK.Location = new System.Drawing.Point(243, 3);
+            this.btOK.Name = "btOK";
+            this.btOK.Size = new System.Drawing.Size(54, 23);
+            this.btOK.TabIndex = 6;
+            this.btOK.Text = "确定";
+            this.btOK.UseVisualStyleBackColor = true;
+            this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
             // SelectOffer
             // 

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main.Product
+namespace Main.OfferForms
 {
     public partial class DataListForm : Form
     {
@@ -25,14 +25,44 @@ namespace Main.Product
 
         public void LoadData()
         {
-            string sql = "select * from Product";
+            string sql = "select * from Offer";
             if (!string.IsNullOrEmpty(tbKeywords.Text.Trim()))
             {
-                sql += (" where " + string.Format("name like '%{0}%'", tbKeywords.Text));
+                sql += (" where " + string.Format("subjectname like '%{0}%'", tbKeywords.Text));
             }
 
             DataTable dt = SQLHelper.Instance.GetDataTable(sql);
             dgList.DataSource = dt;
+
+
+            dgList.CellValueChanged += DgList_CellValueChanged;
+            dgList.BindingContextChanged += DgList_DataSourceChanged;
+        }
+
+        private void DgList_DataSourceChanged(object sender, EventArgs e)
+        {
+            UpdateColumn();
+        }
+
+        private void DgList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateColumn();
+        }
+        private void UpdateColumn()
+        {
+            if (dgList.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgList.Rows)
+                {
+                    try
+                    {
+                        row.Cells["CStateText"].Value = StaticData.GetKey(Convert.ToInt32(row.Cells["CState"].Value));
+                    }
+                    catch
+                    { }
+                }
+            }
+            dgList.Update();
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -83,7 +113,7 @@ namespace Main.Product
         }
         private bool Delete(string id)
         {
-            string sql = "delete from Product where id=@id";
+            string sql = "delete from Offer where id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("id",SqlDbType.VarChar)
                     };

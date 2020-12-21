@@ -25,7 +25,7 @@ namespace Main
 
         private void miOffer_Click(object sender, EventArgs e)
         {
-            Offer.DataListForm dbAccessForm = new Offer.DataListForm();
+            OfferForms.DataListForm dbAccessForm = new OfferForms.DataListForm();
             dbAccessForm.MdiParent = this;
             dbAccessForm.Dock = DockStyle.Fill;
             dbAccessForm.Show();
@@ -33,7 +33,7 @@ namespace Main
 
         private void miProduct_Click(object sender, EventArgs e)
         {
-            Product.DataListForm dbAccessForm = new Product.DataListForm();
+            ProductForms.DataListForm dbAccessForm = new ProductForms.DataListForm();
             dbAccessForm.MdiParent = this;
             dbAccessForm.Dock = DockStyle.Fill;
             dbAccessForm.Show();
@@ -41,7 +41,7 @@ namespace Main
 
         private void miSubject_Click(object sender, EventArgs e)
         {
-            Subject.DataListForm dbAccessForm = new Subject.DataListForm();
+            SubjectForms.DataListForm dbAccessForm = new SubjectForms.DataListForm();
             dbAccessForm.MdiParent = this;
             dbAccessForm.Dock = DockStyle.Fill;
             dbAccessForm.Show();
@@ -52,5 +52,14 @@ namespace Main
             AboutBox about = new AboutBox();
             about.ShowDialog();
         }
+
+        private void miTreeView_Click(object sender, EventArgs e)
+        {
+            TreeviewWindow treeviewWindow = new TreeviewWindow();
+            treeviewWindow.MdiParent = this;
+            treeviewWindow.Dock = DockStyle.Fill;
+            treeviewWindow.Show();
+        }
     }
+
 }

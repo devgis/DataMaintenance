@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main.Subject
+namespace Main.SubjectForms
 {
     public partial class AddEditForm : Form
     {

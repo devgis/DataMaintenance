@@ -76,28 +76,28 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Offer\AddEditForm.cs">
+    <Compile Include="OfferForms\AddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Offer\AddEditForm.Designer.cs">
+    <Compile Include="OfferForms\AddEditForm.Designer.cs">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Offer\DataListForm.cs">
+    <Compile Include="OfferForms\DataListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Offer\DataListForm.Designer.cs">
+    <Compile Include="OfferForms\DataListForm.Designer.cs">
       <DependentUpon>DataListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Product\AddEditForm.cs">
+    <Compile Include="ProductForms\AddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Product\AddEditForm.Designer.cs">
+    <Compile Include="ProductForms\AddEditForm.Designer.cs">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Product\DataListForm.cs">
+    <Compile Include="ProductForms\DataListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Product\DataListForm.Designer.cs">
+    <Compile Include="ProductForms\DataListForm.Designer.cs">
       <DependentUpon>DataListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
@@ -128,31 +128,37 @@
     </Compile>
     <Compile Include="SQLHelper.cs" />
     <Compile Include="StaticData.cs" />
-    <Compile Include="Subject\AddEditForm.cs">
+    <Compile Include="SubjectForms\AddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subject\AddEditForm.Designer.cs">
+    <Compile Include="SubjectForms\AddEditForm.Designer.cs">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subject\DataListForm.cs">
+    <Compile Include="SubjectForms\DataListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subject\DataListForm.Designer.cs">
+    <Compile Include="SubjectForms\DataListForm.Designer.cs">
       <DependentUpon>DataListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeviewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeviewWindow.Designer.cs">
+      <DependentUpon>TreeviewWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Offer\AddEditForm.resx">
+    <EmbeddedResource Include="OfferForms\AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Offer\DataListForm.resx">
+    <EmbeddedResource Include="OfferForms\DataListForm.resx">
       <DependentUpon>DataListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Product\AddEditForm.resx">
+    <EmbeddedResource Include="ProductForms\AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Product\DataListForm.resx">
+    <EmbeddedResource Include="ProductForms\DataListForm.resx">
       <DependentUpon>DataListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
@@ -177,11 +183,14 @@
     <EmbeddedResource Include="SelectForms\SelectProducts.resx">
       <DependentUpon>SelectProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subject\AddEditForm.resx">
+    <EmbeddedResource Include="SubjectForms\AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subject\DataListForm.resx">
+    <EmbeddedResource Include="SubjectForms\DataListForm.resx">
       <DependentUpon>DataListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeviewWindow.resx">
+      <DependentUpon>TreeviewWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

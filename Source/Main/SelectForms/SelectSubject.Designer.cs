@@ -31,12 +31,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbKeywords = new System.Windows.Forms.TextBox();
             this.dgList = new System.Windows.Forms.DataGridView();
-            this.btQuery = new System.Windows.Forms.Button();
-            this.btCancel = new System.Windows.Forms.Button();
-            this.btOK = new System.Windows.Forms.Button();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btQuery = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btOK = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +95,32 @@
             this.dgList.Size = new System.Drawing.Size(562, 342);
             this.dgList.TabIndex = 5;
             // 
+            // CID
+            // 
+            this.CID.DataPropertyName = "ID";
+            this.CID.HeaderText = "ID";
+            this.CID.MinimumWidth = 6;
+            this.CID.Name = "CID";
+            this.CID.ReadOnly = true;
+            this.CID.Visible = false;
+            this.CID.Width = 60;
+            // 
+            // CSelected
+            // 
+            this.CSelected.HeaderText = "Selected";
+            this.CSelected.MinimumWidth = 6;
+            this.CSelected.Name = "CSelected";
+            this.CSelected.Width = 80;
+            // 
+            // CName
+            // 
+            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CName.DataPropertyName = "name";
+            this.CName.HeaderText = "Name";
+            this.CName.MinimumWidth = 6;
+            this.CName.Name = "CName";
+            this.CName.ReadOnly = true;
+            // 
             // btQuery
             // 
             this.btQuery.Location = new System.Drawing.Point(123, 3);
@@ -124,32 +150,6 @@
             this.btOK.Text = "确定";
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
-            // 
-            // CID
-            // 
-            this.CID.DataPropertyName = "ID";
-            this.CID.HeaderText = "ID";
-            this.CID.MinimumWidth = 6;
-            this.CID.Name = "CID";
-            this.CID.ReadOnly = true;
-            this.CID.Visible = false;
-            this.CID.Width = 60;
-            // 
-            // CSelected
-            // 
-            this.CSelected.HeaderText = "Selected";
-            this.CSelected.MinimumWidth = 6;
-            this.CSelected.Name = "CSelected";
-            this.CSelected.Width = 80;
-            // 
-            // CName
-            // 
-            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CName.DataPropertyName = "name";
-            this.CName.HeaderText = "Name";
-            this.CName.MinimumWidth = 6;
-            this.CName.Name = "CName";
-            this.CName.ReadOnly = true;
             // 
             // SelectSubject
             // 
