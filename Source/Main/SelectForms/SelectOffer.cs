@@ -48,6 +48,7 @@ namespace Main.SelectForms
                     if (SelectedIDS.Contains(row.Cells["CID"].Value.ToString()))
                     {
                         (row.Cells["CSelected"] as DataGridViewCheckBoxCell).Value = true;
+                        (row.Cells["CSelected"] as DataGridViewCheckBoxCell).EditingCellFormattedValue = true;
                     }
                 }
             }
