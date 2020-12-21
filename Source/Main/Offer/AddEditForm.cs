@@ -283,6 +283,7 @@ namespace Main.Offer
             {
                 selectedIDS = selectProducts.SelectedIDS;
                 dgProductList.DataSource = selectProducts.SelectedRows;
+                dgProductList.Refresh();
             }
         }
 
