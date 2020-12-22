@@ -97,7 +97,8 @@ namespace Main
 
                 foreach (DataRow row in dtSubject.Rows)
                 {
-                    Subject subject= GetSubJect(row, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
+                    HashSet<string> hashids = new HashSet<string>();
+                    Subject subject= GetSubJect(hashids,row, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
                     list.Add(subject);
                 }
             }
@@ -105,13 +106,14 @@ namespace Main
             return list;
         }
 
-        private Subject GetSubJect(DataRow row, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
+        private Subject GetSubJect(HashSet<string> hashids,DataRow row, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
         {
             if (row==null)
             {
                 return null;
             }
             string subjectid = row["id"].ToString();
+            hashids.Add(subjectid);
             Subject subject = new Subject();
             subject.name = row["name"].ToString();
             subject.net = new List<Subject>();
@@ -148,15 +150,15 @@ namespace Main
                 }
             }
 
-            DataRow[] sbujct_subject_arr = sbujct_subjects.Select(string.Format("SubjectID='{0}'", subjectid));
+            DataRow[] sbujct_subject_arr = sbujct_subjects.Select(string.Format("SubjectID='{0}' and SubSubjectID<>'{0}'", subjectid));
             if (sbujct_subject_arr != null && sbujct_subject_arr.Length > 0)
             {
                 foreach (var row_subject in sbujct_subject_arr)
                 {
                     string id = row_subject["id"].ToString();
-                    if(id!= subjectid)
+                    if(id!= subjectid&&!hashids.Contains(id))
                     {
-                        Subject o = GetSubJect(row_subject, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
+                        Subject o = GetSubJect(hashids,row_subject, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
                         if (o != null)
                         {
                             subject.net.Add(o);
