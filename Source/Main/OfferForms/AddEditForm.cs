@@ -288,6 +288,12 @@ namespace Main.OfferForms
             }
         }
 
+        private void btMangerProduct_Click(object sender, EventArgs e)
+        {
+            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm();
+            dataListForm.ShowDialog();
+        }
+
         //public bool ExistsID(int id)
         //{
         //    string sql = "select * from Student where ID=?";

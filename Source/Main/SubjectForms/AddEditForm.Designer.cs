@@ -32,10 +32,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btSelectOffer = new System.Windows.Forms.Button();
             this.dgOfferList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDoneTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSubjectList = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductList = new System.Windows.Forms.DataGridView();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbSubjectname = new System.Windows.Forms.TextBox();
@@ -45,15 +54,9 @@
             this.btSelect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btSelectSubject = new System.Windows.Forms.Button();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDoneTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btMangerSubject = new System.Windows.Forms.Button();
+            this.btMangerOffer = new System.Windows.Forms.Button();
+            this.btMangerProduct = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgOfferList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubjectList)).BeginInit();
@@ -79,7 +82,11 @@
             this.tableLayoutPanel1.Controls.Add(this.btSelect, 2, 13);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btSelectSubject, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btMangerSubject, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btMangerOffer, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.btMangerProduct, 2, 14);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("宋体", 8F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 26;
@@ -120,9 +127,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(38, 220);
+            this.label3.Location = new System.Drawing.Point(47, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 30);
+            this.label3.Size = new System.Drawing.Size(70, 30);
             this.label3.TabIndex = 27;
             this.label3.Text = "OfferList";
             // 
@@ -159,6 +166,52 @@
             this.dgOfferList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgOfferList.Size = new System.Drawing.Size(440, 144);
             this.dgOfferList.TabIndex = 25;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.dataGridViewTextBoxColumn5.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 143;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "starttime";
+            this.dataGridViewTextBoxColumn7.HeaderText = "StartTime";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "state";
+            this.dataGridViewTextBoxColumn8.HeaderText = "State";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 80;
+            // 
+            // CDoneTime
+            // 
+            this.CDoneTime.DataPropertyName = "donetime";
+            this.CDoneTime.HeaderText = "DoneTime";
+            this.CDoneTime.MinimumWidth = 6;
+            this.CDoneTime.Name = "CDoneTime";
+            this.CDoneTime.ReadOnly = true;
+            this.CDoneTime.Width = 125;
             // 
             // dgSubjectList
             // 
@@ -220,13 +273,49 @@
             this.dgProductList.Size = new System.Drawing.Size(440, 144);
             this.dgProductList.TabIndex = 21;
             // 
+            // CID
+            // 
+            this.CID.DataPropertyName = "ID";
+            this.CID.HeaderText = "ID";
+            this.CID.MinimumWidth = 6;
+            this.CID.Name = "CID";
+            this.CID.ReadOnly = true;
+            this.CID.Visible = false;
+            this.CID.Width = 60;
+            // 
+            // CName
+            // 
+            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CName.DataPropertyName = "name";
+            this.CName.HeaderText = "Name";
+            this.CName.MinimumWidth = 6;
+            this.CName.Name = "CName";
+            this.CName.ReadOnly = true;
+            // 
+            // CPrice
+            // 
+            this.CPrice.DataPropertyName = "price";
+            this.CPrice.HeaderText = "Price";
+            this.CPrice.MinimumWidth = 6;
+            this.CPrice.Name = "CPrice";
+            this.CPrice.ReadOnly = true;
+            this.CPrice.Width = 80;
+            // 
+            // CQuantity
+            // 
+            this.CQuantity.DataPropertyName = "quantity";
+            this.CQuantity.HeaderText = "Quantity";
+            this.CQuantity.MinimumWidth = 6;
+            this.CQuantity.Name = "CQuantity";
+            this.CQuantity.Width = 80;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(22, 370);
+            this.label5.Location = new System.Drawing.Point(33, 370);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 30);
+            this.label5.Size = new System.Drawing.Size(84, 30);
             this.label5.TabIndex = 19;
             this.label5.Text = "ProductList";
             // 
@@ -234,9 +323,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(78, 40);
+            this.label2.Location = new System.Drawing.Point(82, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 30);
+            this.label2.Size = new System.Drawing.Size(35, 30);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
@@ -245,7 +334,7 @@
             this.tbSubjectname.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbSubjectname.Location = new System.Drawing.Point(123, 43);
             this.tbSubjectname.Name = "tbSubjectname";
-            this.tbSubjectname.Size = new System.Drawing.Size(440, 25);
+            this.tbSubjectname.Size = new System.Drawing.Size(440, 23);
             this.tbSubjectname.TabIndex = 7;
             // 
             // panel1
@@ -294,9 +383,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(22, 70);
+            this.label1.Location = new System.Drawing.Point(33, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 30);
+            this.label1.Size = new System.Drawing.Size(84, 30);
             this.label1.TabIndex = 22;
             this.label1.Text = "SubjectList";
             // 
@@ -311,87 +400,35 @@
             this.btSelectSubject.UseVisualStyleBackColor = true;
             this.btSelectSubject.Click += new System.EventHandler(this.btSelectSubject_Click);
             // 
-            // CID
+            // btMangerSubject
             // 
-            this.CID.DataPropertyName = "ID";
-            this.CID.HeaderText = "ID";
-            this.CID.MinimumWidth = 6;
-            this.CID.Name = "CID";
-            this.CID.ReadOnly = true;
-            this.CID.Visible = false;
-            this.CID.Width = 60;
+            this.btMangerSubject.Location = new System.Drawing.Point(569, 103);
+            this.btMangerSubject.Name = "btMangerSubject";
+            this.btMangerSubject.Size = new System.Drawing.Size(44, 23);
+            this.btMangerSubject.TabIndex = 28;
+            this.btMangerSubject.Text = "管理";
+            this.btMangerSubject.UseVisualStyleBackColor = true;
+            this.btMangerSubject.Click += new System.EventHandler(this.btMangerSubject_Click);
             // 
-            // CName
+            // btMangerOffer
             // 
-            this.CName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CName.DataPropertyName = "name";
-            this.CName.HeaderText = "Name";
-            this.CName.MinimumWidth = 6;
-            this.CName.Name = "CName";
-            this.CName.ReadOnly = true;
+            this.btMangerOffer.Location = new System.Drawing.Point(569, 253);
+            this.btMangerOffer.Name = "btMangerOffer";
+            this.btMangerOffer.Size = new System.Drawing.Size(44, 23);
+            this.btMangerOffer.TabIndex = 29;
+            this.btMangerOffer.Text = "管理";
+            this.btMangerOffer.UseVisualStyleBackColor = true;
+            this.btMangerOffer.Click += new System.EventHandler(this.btMangerOffer_Click);
             // 
-            // CPrice
+            // btMangerProduct
             // 
-            this.CPrice.DataPropertyName = "price";
-            this.CPrice.HeaderText = "Price";
-            this.CPrice.MinimumWidth = 6;
-            this.CPrice.Name = "CPrice";
-            this.CPrice.ReadOnly = true;
-            this.CPrice.Width = 80;
-            // 
-            // CQuantity
-            // 
-            this.CQuantity.DataPropertyName = "quantity";
-            this.CQuantity.HeaderText = "Quantity";
-            this.CQuantity.MinimumWidth = 6;
-            this.CQuantity.Name = "CQuantity";
-            this.CQuantity.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn5.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            this.dataGridViewTextBoxColumn5.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "name";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 143;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "starttime";
-            this.dataGridViewTextBoxColumn7.HeaderText = "StartTime";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "state";
-            this.dataGridViewTextBoxColumn8.HeaderText = "State";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 80;
-            // 
-            // CDoneTime
-            // 
-            this.CDoneTime.DataPropertyName = "donetime";
-            this.CDoneTime.HeaderText = "DoneTime";
-            this.CDoneTime.MinimumWidth = 6;
-            this.CDoneTime.Name = "CDoneTime";
-            this.CDoneTime.ReadOnly = true;
-            this.CDoneTime.Width = 125;
+            this.btMangerProduct.Location = new System.Drawing.Point(569, 403);
+            this.btMangerProduct.Name = "btMangerProduct";
+            this.btMangerProduct.Size = new System.Drawing.Size(44, 23);
+            this.btMangerProduct.TabIndex = 30;
+            this.btMangerProduct.Text = "管理";
+            this.btMangerProduct.UseVisualStyleBackColor = true;
+            this.btMangerProduct.Click += new System.EventHandler(this.btMangerProduct_Click);
             // 
             // AddEditForm
             // 
@@ -443,5 +480,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDoneTime;
+        private System.Windows.Forms.Button btMangerSubject;
+        private System.Windows.Forms.Button btMangerOffer;
+        private System.Windows.Forms.Button btMangerProduct;
     }
 }

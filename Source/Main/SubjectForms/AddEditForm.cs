@@ -400,5 +400,23 @@ namespace Main.SubjectForms
                 dgOfferList.DataSource = selectOffer.SelectedRows;
             }
         }
+
+        private void btMangerProduct_Click(object sender, EventArgs e)
+        {
+            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm();
+            dataListForm.ShowDialog();
+        }
+
+        private void btMangerOffer_Click(object sender, EventArgs e)
+        {
+            OfferForms.DataListForm dataListForm = new OfferForms.DataListForm();
+            dataListForm.ShowDialog();
+        }
+
+        private void btMangerSubject_Click(object sender, EventArgs e)
+        {
+            SubjectForms.DataListForm dataListForm = new SubjectForms.DataListForm();
+            dataListForm.ShowDialog();
+        }
     }
 }

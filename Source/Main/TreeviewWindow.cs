@@ -97,8 +97,7 @@ namespace Main
 
                 foreach (DataRow row in dtSubject.Rows)
                 {
-                    string subjectid = row["id"].ToString();
-                    Subject subject= GetSubJect(subjectid, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
+                    Subject subject= GetSubJect(row, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
                     list.Add(subject);
                 }
             }
@@ -106,14 +105,13 @@ namespace Main
             return list;
         }
 
-        private Subject GetSubJect(string subjectid, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
+        private Subject GetSubJect(DataRow row, DataTable dtSubject, DataTable sbujct_subjects, DataTable sbujct_products, DataTable sbujct_offers, DataTable offer_products)
         {
-            DataRow[] querysubject = dtSubject.Select(string.Format("id='{0}'", subjectid));
-            if (string.IsNullOrEmpty(subjectid)||querysubject == null || querysubject.Length <= 0)
+            if (row==null)
             {
                 return null;
             }
-            DataRow row = querysubject[0];
+            string subjectid = row["id"].ToString();
             Subject subject = new Subject();
             subject.name = row["name"].ToString();
             subject.net = new List<Subject>();
@@ -158,7 +156,7 @@ namespace Main
                     string id = row_subject["id"].ToString();
                     if(id!= subjectid)
                     {
-                        Subject o = GetSubJect(row_subject["id"].ToString(), dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
+                        Subject o = GetSubJect(row_subject, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
                         if (o != null)
                         {
                             subject.net.Add(o);
