@@ -15,10 +15,12 @@ namespace Main.ProductForms
     {
         bool IsEdit = false;
         private string ID = string.Empty;
-        public AddEditForm(string id="",bool isEdit=false)
+        public int Flag = 0;
+        public AddEditForm(int flag,string id="",bool isEdit=false)
         {
             InitializeComponent();
             IsEdit = isEdit;
+            Flag = flag;
             if (isEdit)
             {
                 this.Text = "编辑";
@@ -121,36 +123,40 @@ namespace Main.ProductForms
 
         public bool Add()
         {
-            string sql = "insert into Product (id,name,price,quantity) values(@id,@name,@price,@quantity)";
+            string sql = "insert into Product (id,name,price,quantity,flag) values(@id,@name,@price,@quantity,@flag)";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("name",SqlDbType.VarChar),
                          new SqlParameter("price",SqlDbType.Decimal),
                          new SqlParameter("quantity",SqlDbType.Decimal),
-                         new SqlParameter("id",SqlDbType.VarChar)
-                    };
+                         new SqlParameter("id",SqlDbType.VarChar),
+                         new SqlParameter("flag",SqlDbType.Int)
+        };
 
             parameters[0].Value = tbName.Text;
             parameters[1].Value = Convert.ToDecimal(tbPrice.Text);
             parameters[2].Value = Convert.ToDecimal(tbQuantity.Text);
             parameters[3].Value = Guid.NewGuid().ToString() ;
+            parameters[4].Value = Flag;
 
             return SQLHelper.Instance.ExecSql(sql, parameters);
         }
 
         public bool Update()
         {
-            string sql = "update Product set name=@name,price=@price,quantity=@quantity where id=@id";
+            string sql = "update Product set name=@name,price=@price,quantity=@quantity where id=@id and flag=@flag";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("name",SqlDbType.VarChar),
                          new SqlParameter("price",SqlDbType.Decimal),
                          new SqlParameter("quantity",SqlDbType.Decimal),
-                         new SqlParameter("id",SqlDbType.VarChar)
+                         new SqlParameter("id",SqlDbType.VarChar),
+                         new SqlParameter("flag",SqlDbType.Int)
                     };
            
             parameters[0].Value = tbName.Text;
             parameters[1].Value = Convert.ToDecimal(tbPrice.Text);
             parameters[2].Value = Convert.ToDecimal(tbQuantity.Text);
             parameters[3].Value = ID;
+            parameters[4].Value = Flag;
 
             return SQLHelper.Instance.ExecSql(sql, parameters);
         }
@@ -172,25 +178,5 @@ namespace Main.ProductForms
                 tbPrice.Text = dt.Rows[0]["price"].ToString();
             }
         }
-
-        //public bool ExistsID(int id)
-        //{
-        //    string sql = "select * from Student where ID=?";
-        //    SqlParameter[] parameters = new SqlParameter[] {
-        //                 new SqlParameter("ID",OleDbType.Numeric)
-        //            };
-
-        //    parameters[0].Value = id;
-
-        //    DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

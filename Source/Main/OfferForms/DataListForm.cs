@@ -21,6 +21,7 @@ namespace Main.OfferForms
         private void DBAccessForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            this.dgList.AutoGenerateColumns = false;
         }
 
         public void LoadData()

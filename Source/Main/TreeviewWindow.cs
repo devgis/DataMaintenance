@@ -81,21 +81,21 @@ namespace Main
             if (dtSubject != null && dtSubject.Rows.Count > 0)
             {
                 //load sbujct_products
-                sql = "select s.ID as SubjectID,p.id,p.name,p.price,sp.quantity from Subject s left join Subject_Product sp on s.ID=sp.SubjectID left join Product p on sp.ProductID=p.id ";
+                sql = "select s.ID as SubjectID,p.id,p.name,p.price,sp.quantity from Subject s left join Subject_Product sp on s.ID=sp.SubjectID left join Product p on sp.ProductID=p.id where p.flag=1";
                 DataTable sbujct_products = SQLHelper.Instance.GetDataTable(sql);
                 //load sbujct_offers
                 sql = "select so.SubjectID,* from  Subject_Offer so left join Offer o on o.id=so.OfferID";
                 DataTable sbujct_offers = SQLHelper.Instance.GetDataTable(sql);
 
                 //offer_products
-                sql = "select o.ID as SubjectID,p.id,p.name,p.price,op.quantity from Offer o left join Offer_Product op on o.ID=op.OfferID left join Product p on op.ProductID=p.id ";
+                sql = "select o.ID as OfferID,p.id,p.name,p.price,op.quantity from Offer o left join Offer_Product op on o.ID=op.OfferID left join Product p on op.ProductID=p.id where p.flag=2";
                 DataTable offer_products = SQLHelper.Instance.GetDataTable(sql);
 
                 //load sbujct_subjects
-                sql = "select ss.SubjectID,* from  Subject_Subject ss left join Subject s on ss.SubSubjectID=s.id";
+                sql = "select ss.SubjectID,* from  Subject_Subject ss left join Subject s on ss.SubSubjectID=s.id where flag=2";
                 DataTable sbujct_subjects = SQLHelper.Instance.GetDataTable(sql);
 
-                foreach (DataRow row in dtSubject.Rows)
+                foreach (DataRow row in dtSubject.Select("flag=1"))
                 {
                     HashSet<string> hashids = new HashSet<string>();
                     Subject subject= GetSubJect(hashids,row, dtSubject, sbujct_subjects, sbujct_products, sbujct_offers, offer_products);
@@ -113,7 +113,15 @@ namespace Main
                 return null;
             }
             string subjectid = row["id"].ToString();
-            hashids.Add(subjectid);
+            if (hashids.Contains(subjectid))
+            {
+                return null;
+            }
+            else
+            {
+                hashids.Add(subjectid);
+            }
+            
             Subject subject = new Subject();
             subject.name = row["name"].ToString();
             subject.net = new List<Subject>();
@@ -133,6 +141,19 @@ namespace Main
                     o.state = (WhyOffer)Convert.ToInt32(row_offer["state"]);
                     o.subjectname = row_offer["subjectname"].ToString();
                     subject.plan.Add(o);
+
+                    DataRow[] offer_product_arr = offer_products.Select(string.Format("OfferID='{0}'", offerid));
+                    if (offer_product_arr != null && offer_product_arr.Length > 0)
+                    {
+                        foreach (var row_product in offer_product_arr)
+                        {
+                            Product op = new Product();
+                            op.name = row_product["name"].ToString();
+                            op.price = Convert.ToDouble(row_product["price"]);
+                            op.quantity = Convert.ToDouble(row_product["quantity"]);
+                            o.productList.Add(op);
+                        }
+                    }
                 }
             }
 

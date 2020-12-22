@@ -19,6 +19,7 @@ namespace Main.OfferForms
         public AddEditForm(string id="",bool isEdit=false)
         {
             InitializeComponent();
+            this.dgProductList.AutoGenerateColumns = false;
             IsEdit = isEdit;
             if (isEdit)
             {
@@ -259,7 +260,7 @@ namespace Main.OfferForms
             }
 
             //load products
-            sql = "select p.id,p.name,p.price,op.quantity from Offer o left join Offer_Product op on o.ID=op.OfferID left join Product p on op.ProductID=p.id where o.ID=@offerid";
+            sql = "select p.id,p.name,p.price,op.quantity from Offer o left join Offer_Product op on o.ID=op.OfferID left join Product p on op.ProductID=p.id where o.ID=@offerid and p.flag=2";
             parameters = new SqlParameter[] {
                          new SqlParameter("offerid",SqlDbType.VarChar)
                     };
@@ -279,7 +280,7 @@ namespace Main.OfferForms
 
         private void btSelect_Click(object sender, EventArgs e)
         {
-            SelectProducts selectProducts = new SelectProducts(selectedIDS);
+            SelectProducts selectProducts = new SelectProducts(selectedIDS,2);
             if (selectProducts.ShowDialog()==DialogResult.OK)
             {
                 selectedIDS = selectProducts.SelectedIDS;
@@ -290,28 +291,8 @@ namespace Main.OfferForms
 
         private void btMangerProduct_Click(object sender, EventArgs e)
         {
-            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm();
+            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm(2);
             dataListForm.ShowDialog();
         }
-
-        //public bool ExistsID(int id)
-        //{
-        //    string sql = "select * from Student where ID=?";
-        //    SqlParameter[] parameters = new SqlParameter[] {
-        //                 new SqlParameter("ID",OleDbType.Numeric)
-        //            };
-
-        //    parameters[0].Value = id;
-
-        //    DataTable dt = SQLHelper.Instance.GetDataTable(sql, parameters);
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

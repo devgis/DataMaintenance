@@ -95,23 +95,25 @@
             // miOffer
             // 
             this.miOffer.Name = "miOffer";
-            this.miOffer.Size = new System.Drawing.Size(179, 26);
+            this.miOffer.Size = new System.Drawing.Size(224, 26);
             this.miOffer.Text = "Offer(&O)";
             this.miOffer.ToolTipText = "Offer管理";
+            this.miOffer.Visible = false;
             this.miOffer.Click += new System.EventHandler(this.miOffer_Click);
             // 
             // miProduct
             // 
             this.miProduct.Name = "miProduct";
-            this.miProduct.Size = new System.Drawing.Size(179, 26);
+            this.miProduct.Size = new System.Drawing.Size(224, 26);
             this.miProduct.Text = "Product(&P)";
             this.miProduct.ToolTipText = "Product管理";
+            this.miProduct.Visible = false;
             this.miProduct.Click += new System.EventHandler(this.miProduct_Click);
             // 
             // miSubject
             // 
             this.miSubject.Name = "miSubject";
-            this.miSubject.Size = new System.Drawing.Size(179, 26);
+            this.miSubject.Size = new System.Drawing.Size(224, 26);
             this.miSubject.Text = "Subject(&S)";
             this.miSubject.ToolTipText = "Subject管理";
             this.miSubject.Click += new System.EventHandler(this.miSubject_Click);
@@ -119,7 +121,7 @@
             // miTreeView
             // 
             this.miTreeView.Name = "miTreeView";
-            this.miTreeView.Size = new System.Drawing.Size(179, 26);
+            this.miTreeView.Size = new System.Drawing.Size(224, 26);
             this.miTreeView.Text = "TreeView(&T)";
             this.miTreeView.Click += new System.EventHandler(this.miTreeView_Click);
             // 
@@ -183,6 +185,7 @@
             this.tiOffer.Text = "Offer";
             this.tiOffer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.tiOffer.ToolTipText = "Offer管理";
+            this.tiOffer.Visible = false;
             this.tiOffer.Click += new System.EventHandler(this.miOffer_Click);
             // 
             // toolProduct
@@ -194,6 +197,7 @@
             this.toolProduct.Size = new System.Drawing.Size(29, 24);
             this.toolProduct.Text = "Product";
             this.toolProduct.ToolTipText = "Product管理";
+            this.toolProduct.Visible = false;
             this.toolProduct.Click += new System.EventHandler(this.miProduct_Click);
             // 
             // toolSubject

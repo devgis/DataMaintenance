@@ -16,10 +16,15 @@ namespace Main.SubjectForms
     {
         bool IsEdit = false;
         private string ID = string.Empty;
-        public AddEditForm(string id="",bool isEdit=false)
+        public int Flag = 0;
+        public AddEditForm( int flag,string id="",bool isEdit=false)
         {
             InitializeComponent();
+            this.dgOfferList.AutoGenerateColumns = false;
+            this.dgProductList.AutoGenerateColumns = false;
+            this.dgSubjectList.AutoGenerateColumns = false;
             IsEdit = isEdit;
+            Flag = flag;
             if (isEdit)
             {
                 this.Text = "编辑";
@@ -30,6 +35,7 @@ namespace Main.SubjectForms
             {
                 this.Text = "新增";
             }
+            
         }
 
         private void btOK_Click(object sender, EventArgs e)
@@ -105,14 +111,16 @@ namespace Main.SubjectForms
             string newid = Guid.NewGuid().ToString();
             List<string> sqls = new List<string>();
             List<SqlParameter[]> parameterslist = new List<SqlParameter[]>();
-            string sql = "insert into Subject (id,name) values(@id,@name)";
+            string sql = "insert into Subject (id,name,flag) values(@id,@name,@flag)";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("name",SqlDbType.VarChar),
-                         new SqlParameter("id",SqlDbType.VarChar)
+                         new SqlParameter("id",SqlDbType.VarChar),
+                         new SqlParameter("flag",SqlDbType.Int)
                     };
 
             parameters[0].Value = tbSubjectname.Text;
             parameters[1].Value = newid;
+            parameters[2].Value = Flag;
             sqls.Add(sql);
             parameterslist.Add(parameters);
 
@@ -192,14 +200,16 @@ namespace Main.SubjectForms
             List<string> sqls = new List<string>();
             List<SqlParameter[]> parameterslist = new List<SqlParameter[]>();
 
-            string sql = "update Subject set name=@name where id=@id";
+            string sql = "update Subject set name=@name where flag=@flag and id=@id";
             SqlParameter[] parameters = new SqlParameter[] {
                          new SqlParameter("name",SqlDbType.VarChar),
-                         new SqlParameter("id",SqlDbType.VarChar)
+                         new SqlParameter("id",SqlDbType.VarChar),
+                         new SqlParameter("flag",SqlDbType.Int)
                     };
 
             parameters[0].Value = tbSubjectname.Text;
             parameters[1].Value = ID;
+            parameters[2].Value = Flag;
             sqls.Add(sql);
             parameterslist.Add(parameters);
 
@@ -318,7 +328,7 @@ namespace Main.SubjectForms
             }
 
             //load products
-            sql = "select p.id,p.name,p.price,sp.quantity from Subject s left join Subject_Product sp on s.ID=sp.SubjectID left join Product p on sp.ProductID=p.id where s.ID=@subjectid";
+            sql = "select p.id,p.name,p.price,sp.quantity from  Subject_Product sp left join Subject s on s.ID=sp.SubjectID left join Product p on sp.ProductID=p.id where s.ID=@subjectid and p.flag=1";
             parameters = new SqlParameter[] {
                          new SqlParameter("subjectid",SqlDbType.VarChar)
                     };
@@ -369,7 +379,7 @@ namespace Main.SubjectForms
 
         private void btSelect_Click(object sender, EventArgs e)
         {
-            SelectProducts selectProducts = new SelectProducts(selectedIDS);
+            SelectProducts selectProducts = new SelectProducts(selectedIDS,1);
             if (selectProducts.ShowDialog()==DialogResult.OK)
             {
                 selectedIDS = selectProducts.SelectedIDS;
@@ -383,7 +393,7 @@ namespace Main.SubjectForms
 
         private void btSelectSubject_Click(object sender, EventArgs e)
         {
-            SelectSubject selectSubject = new SelectSubject(selectedSubjectIDS);
+            SelectSubject selectSubject = new SelectSubject(selectedSubjectIDS,2);
             if (selectSubject.ShowDialog() == DialogResult.OK)
             {
                 selectedSubjectIDS = selectSubject.SelectedIDS;
@@ -403,7 +413,7 @@ namespace Main.SubjectForms
 
         private void btMangerProduct_Click(object sender, EventArgs e)
         {
-            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm();
+            ProductForms.DataListForm dataListForm = new ProductForms.DataListForm(1);
             dataListForm.ShowDialog();
         }
 
@@ -415,7 +425,7 @@ namespace Main.SubjectForms
 
         private void btMangerSubject_Click(object sender, EventArgs e)
         {
-            SubjectForms.DataListForm dataListForm = new SubjectForms.DataListForm();
+            SubjectForms.DataListForm dataListForm = new SubjectForms.DataListForm(2);
             dataListForm.ShowDialog();
         }
     }

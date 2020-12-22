@@ -15,10 +15,13 @@ namespace Main.SelectForms
     {
         public List<string> SelectedIDS = null;
         public DataTable SelectedRows = null;
-        public SelectSubject(List<string> selectedIDS)
+        public int Flag = 0;
+        public SelectSubject(List<string> selectedIDS, int flag)
         {
             InitializeComponent();
-            SelectedIDS= selectedIDS;
+            this.dgList.AutoGenerateColumns = false;
+            SelectedIDS = selectedIDS;
+            Flag = flag;
         }
 
         private void DBAccessForm_Load(object sender, EventArgs e)
@@ -28,10 +31,10 @@ namespace Main.SelectForms
 
         public void LoadData()
         {
-            string sql = "select * from Subject";
+            string sql = "select * from Subject where flag="+Flag;
             if (!string.IsNullOrEmpty(tbKeywords.Text.Trim()))
             {
-                sql += (" where " + string.Format("name like '%{0}%'", tbKeywords.Text));
+                sql += (" and " + string.Format("name like '%{0}%'", tbKeywords.Text));
             }
 
             DataTable dt = SQLHelper.Instance.GetDataTable(sql);

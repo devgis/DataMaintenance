@@ -25,23 +25,23 @@ namespace Main
 
         private void miOffer_Click(object sender, EventArgs e)
         {
-            OfferForms.DataListForm dbAccessForm = new OfferForms.DataListForm();
-            dbAccessForm.MdiParent = this;
-            dbAccessForm.Dock = DockStyle.Fill;
-            dbAccessForm.Show();
+            //OfferForms.DataListForm dbAccessForm = new OfferForms.DataListForm();
+            //dbAccessForm.MdiParent = this;
+            //dbAccessForm.Dock = DockStyle.Fill;
+            //dbAccessForm.Show();
         }
 
         private void miProduct_Click(object sender, EventArgs e)
         {
-            ProductForms.DataListForm dbAccessForm = new ProductForms.DataListForm();
-            dbAccessForm.MdiParent = this;
-            dbAccessForm.Dock = DockStyle.Fill;
-            dbAccessForm.Show();
+            //ProductForms.DataListForm dbAccessForm = new ProductForms.DataListForm(0);
+            //dbAccessForm.MdiParent = this;
+            //dbAccessForm.Dock = DockStyle.Fill;
+            //dbAccessForm.Show();
         }
 
         private void miSubject_Click(object sender, EventArgs e)
         {
-            SubjectForms.DataListForm dbAccessForm = new SubjectForms.DataListForm();
+            SubjectForms.DataListForm dbAccessForm = new SubjectForms.DataListForm(1);
             dbAccessForm.MdiParent = this;
             dbAccessForm.Dock = DockStyle.Fill;
             dbAccessForm.Show();

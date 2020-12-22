@@ -18,7 +18,8 @@ namespace Main.SelectForms
         public SelectOffer(List<string> selectedIDS)
         {
             InitializeComponent();
-            SelectedIDS= selectedIDS;
+            this.dgList.AutoGenerateColumns = false;
+            SelectedIDS = selectedIDS;
         }
 
         private void DBAccessForm_Load(object sender, EventArgs e)
